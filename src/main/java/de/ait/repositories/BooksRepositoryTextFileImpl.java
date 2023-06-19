@@ -2,17 +2,15 @@ package de.ait.repositories;
 
 import de.ait.models.Book;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersRepositoryTextFileImpl implements UsersRepository {
+public class BooksRepositoryTextFileImpl implements BooksRepository {
 
     private String fileName;
 
-    public UsersRepositoryTextFileImpl(String fileName) {
+    public BooksRepositoryTextFileImpl(String fileName) {
         this.fileName = fileName;
     }
 
@@ -36,6 +34,22 @@ public class UsersRepositoryTextFileImpl implements UsersRepository {
         }
 
         return users;
+    }
+
+    @Override
+    public void writeBookToFile(Book book) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter
+                (new FileWriter(fileName, true));) {
+
+            String userName = "";
+
+            userName = book.getTitle();
+            bufferedWriter.write(userName);
+            bufferedWriter.newLine();
+
+        } catch (IOException e) {
+            System.err.println("Произошла ошибка");
+        }
     }
 
     private static Book parseLine(String line) {

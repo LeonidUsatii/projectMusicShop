@@ -1,11 +1,10 @@
 package de.ait.app;
 
-import de.ait.repositories.UsersRepository;
-import de.ait.repositories.UsersRepositoryListImpl;
-import de.ait.repositories.UsersRepositoryTextFileImpl;
-import de.ait.services.UsersService;
-import de.ait.services.UsersServiceImpl;
-import org.w3c.dom.ls.LSOutput;
+import de.ait.repositories.BooksRepository;
+import de.ait.repositories.BooksRepositoryListImpl;
+import de.ait.repositories.BooksRepositoryTextFileImpl;
+import de.ait.services.BookServiceImpl;
+import de.ait.services.BooksService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,10 +13,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        UsersRepository usersRepository = new UsersRepositoryTextFileImpl("users.txt");
-        UsersRepository testUserRepository = new UsersRepositoryListImpl();
+        BooksRepository booksRepository = new BooksRepositoryTextFileImpl("files/books.txt");
+        BooksService booksService = new BookServiceImpl(booksRepository);
 
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+
 
         while (true) {
             System.out.println("1. Вывести имена всех пользователей");
@@ -35,19 +34,21 @@ public class Main {
 
             switch (command) {
                 case 1:
-                    System.out.println("Выводим имена пользователей...");
+                    //System.out.println("Выводим имена пользователей...");
 
-                    List<String> names = usersService.getNames();
+                    //List<String> names = usersService.getNames();
 
-                    for (String name : names) {
-                        System.out.println(name);
-                    }
+//                    for (String name : names) {
+//                        System.out.println(name);
+//                    }
+
+                    booksService.addBook("Title1");
 
                     break;
                 case 2:
-                    System.out.println("Выводим самого взрослого пользователя");
-                    String lastName = usersService.getLastNameOfMostAging();
-                    System.out.println(lastName);
+//                    System.out.println("Выводим самого взрослого пользователя");
+//                    //String lastName = usersService.getLastNameOfMostAging();
+//                    System.out.println(lastName);
 
                     break;
                 case 0:
