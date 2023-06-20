@@ -17,12 +17,8 @@ public class Main {
         BooksService booksService = new BookServiceImpl(booksRepository);
 
         while (true) {
-            System.out.println("1. Вывести имена всех пользователей");
-            System.out.println("2. Вывести фамилию самого взрослого пользователя");
-            System.out.println("3. Сохранить нового пользователя");
-            System.out.println("4. Вывести средний возраст всех пользователей");
-            System.out.println("5. Вывести возраст самого высокого человека");
-            System.out.println("6. Вывести имя и фамилию самого низкого человека");
+            System.out.println("1. Вывести названия книг");
+            System.out.println("2. Добавить новую книгу");
             System.out.println("0. Выход");
             int command = scanner.nextInt();
             scanner.nextLine();
