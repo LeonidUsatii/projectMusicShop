@@ -16,24 +16,23 @@ public class BooksRepositoryTextFileImpl implements BooksRepository {
 
     @Override
     public List<Book> findAll() {
-        List<Book> users = new ArrayList<>();
+        List<Book> books = new ArrayList<>();
 
-        // try-with-resources
         try (FileReader fileReader = new FileReader(fileName);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             String line = bufferedReader.readLine();
 
             while (line != null) {
-                Book user = parseLine(line); // преобразуем пользователя в строку
-                users.add(user); // положили пользователя в список
+                Book book = parseLine(line); // преобразуем пользователя в строку
+                books.add(book); // положили пользователя в список
                 line = bufferedReader.readLine(); // считали следующую строку
             }
         } catch (IOException e) {
             System.err.println("Произошла ошибка");
         }
 
-        return users;
+        return books;
     }
 
     @Override
@@ -41,10 +40,13 @@ public class BooksRepositoryTextFileImpl implements BooksRepository {
         try (BufferedWriter bufferedWriter = new BufferedWriter
                 (new FileWriter(fileName, true));) {
 
-            String userName = "";
+            String bookObject = "";
 
-            userName = book.getTitle();
-            bufferedWriter.write(userName);
+            bookObject = book.getTitle() + "|" + book.getAuthor()
+                    + "|" + book.getPrice() + "|" + book.getReleaseYear()
+                    + "|" + book.getGenre();
+
+            bufferedWriter.write(bookObject);
             bufferedWriter.newLine();
 
         } catch (IOException e) {

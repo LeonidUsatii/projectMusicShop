@@ -1,11 +1,11 @@
 package de.ait.app;
 
+import de.ait.models.Genre;
 import de.ait.repositories.BooksRepository;
 import de.ait.repositories.BooksRepositoryListImpl;
 import de.ait.repositories.BooksRepositoryTextFileImpl;
 import de.ait.services.BookServiceImpl;
 import de.ait.services.BooksService;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,40 +16,78 @@ public class Main {
         BooksRepository booksRepository = new BooksRepositoryTextFileImpl("files/books.txt");
         BooksService booksService = new BookServiceImpl(booksRepository);
 
-
-
         while (true) {
             System.out.println("1. Вывести имена всех пользователей");
             System.out.println("2. Вывести фамилию самого взрослого пользователя");
-
-            System.out.println("3. Сохранить нового пользователя"); // с консоли считываете имя фамилию возраст рост и сохраняете в файл
+            System.out.println("3. Сохранить нового пользователя");
             System.out.println("4. Вывести средний возраст всех пользователей");
             System.out.println("5. Вывести возраст самого высокого человека");
             System.out.println("6. Вывести имя и фамилию самого низкого человека");
-
             System.out.println("0. Выход");
-
             int command = scanner.nextInt();
             scanner.nextLine();
 
             switch (command) {
                 case 1:
-                    //System.out.println("Выводим имена пользователей...");
+                    System.out.println("Выводим название книг...");
 
-                    //List<String> names = usersService.getNames();
+                    List<String> names = booksService.getNames();
 
-//                    for (String name : names) {
-//                        System.out.println(name);
-//                    }
-
-                    booksService.addBook("Title1");
-
+                    for (String name : names) {
+                        System.out.println(name);
+                    }
                     break;
                 case 2:
-//                    System.out.println("Выводим самого взрослого пользователя");
-//                    //String lastName = usersService.getLastNameOfMostAging();
-//                    System.out.println(lastName);
+                   System.out.println("Добавляем новую книгу");
 
+                    System.out.println("Введите название книги: ");
+                    String title = scanner.nextLine();
+
+                    System.out.println("Введите автора: ");
+                    String author = scanner.nextLine();
+
+                    System.out.println("Введите стоимость книги: ");
+                    double price = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    System.out.println("Введите дату издания: ");
+                    String releaseYear = scanner.nextLine();
+
+                    System.out.println("Введите жанр книги: ");
+
+                    System.out.println("1. DETECTIVE");
+                    System.out.println("2. NOVEL");
+                    System.out.println("3. POETRY");
+                    System.out.println("4. FANTASY");
+                    System.out.println("5. EDUCATION");
+                    System.out.println("6. KIDS");
+
+                    command = scanner.nextInt();
+                    scanner.nextLine();
+                    Genre genre = Genre.DETECTIVE;
+
+                    switch (command) {
+                        case 1:
+                            genre = Genre.DETECTIVE;
+                            break;
+                        case 2:
+                            genre = Genre.NOVEL;
+                            break;
+                        case 3:
+                            genre = Genre.POETRY;
+                            break;
+                        case 4:
+                            genre = Genre.FANTASY;
+                            break;
+                        case 5:
+                            genre = Genre.EDUCATION;
+                            break;
+                        case 6:
+                            genre = Genre.KIDS;
+                            break;
+                    }
+
+                    booksService.addBook(title, author, price, releaseYear, genre);
                     break;
                 case 0:
                     System.out.println("Выход");
