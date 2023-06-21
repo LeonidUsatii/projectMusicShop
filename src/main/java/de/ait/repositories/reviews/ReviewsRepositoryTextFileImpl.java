@@ -17,6 +17,11 @@ public class ReviewsRepositoryTextFileImpl implements ReviewsRepository {
     }
 
     @Override
+    public Review findByTitle(String title) {
+        return null;
+    }
+
+    @Override
     public Review findById(String id) {
         return null;
     }

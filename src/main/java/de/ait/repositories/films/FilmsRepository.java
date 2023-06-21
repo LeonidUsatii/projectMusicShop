@@ -13,5 +13,5 @@ public interface FilmsRepository extends CrudRepository<Film> {
     void save(Film model);
 
     @Override
-    Film findById(String id);
+    Film findByTitle(String title);
 }

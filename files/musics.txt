@@ -1,10 +1,10 @@
-adb158ed-5934-4949-8a48-48bcfb64493a|Product{, category=MUSIC, title='Courage', price=8.0, releaseYear='2019-4-21'}|POP|Celin Dion
-f8fff5e0-8b34-4941-bedd-ccdc0a5f70cb|Product{, category=MUSIC, title='Esco di rado', price=9.0, releaseYear='2000-8-14'}|POP|Adriano Celentano
-f8d8d39a-7819-4d5c-8b09-b699b66156e7|Product{, category=MUSIC, title='Ray of Light', price=5.0, releaseYear='1998-11-3'}|POP|Madonna
-337cbd6d-8897-4b97-83d4-bd977bbad81b|Product{, category=MUSIC, title='Revolver', price=10.0, releaseYear='1966-6-25'}|ROCK|Beatles
-261792cc-e6b4-4af9-8827-5cb80a177354|Product{, category=MUSIC, title='A night at the Opera', price=8.0, releaseYear='1975-3-21'}|ROCK|Queen
-dcd7f337-15fb-4708-a121-3ce254bc0de1|Product{, category=MUSIC, title='Si', price=7.0, releaseYear='2018-2-8'}|CLASSIC|Andrea Bocelli
-0fcfed09-3f6a-4b10-a6d3-719288d93e76|Product{, category=MUSIC, title='Le secret', price=5.0, releaseYear='2013-2-11'}|CLASSIC|Lara Fabian
-df9256ee-53c8-466e-924b-160a0ecad417|Product{, category=MUSIC, title='Ederlezi', price=4.0, releaseYear='1998-3-25'}|ETHNIC|Goran Bregovic
-53881d87-6203-469f-bff9-632d3dcdfa34|Product{, category=MUSIC, title='Desire', price=7.0, releaseYear='1976'}|ETHNIC|Bob Dylan
-61cb7574-bb06-4e27-996d-d8128f7dc605|Product{, category=MUSIC, title='Deluxe', price=12.0, releaseYear='2017-5-5'}|ETHNIC|Ed Sheeran
+6e20ae09-9c47-453c-a372-ac14897144d6|MUSIC|Courage|8.0|2019-4-21|POP|Celin Dion
+01c27d93-5796-45c1-a786-51354fbe1cc4|MUSIC|Esco di rado|9.0|2000-8-14|POP|Adriano Celentano
+e8086c34-51e8-4d86-880a-74073a0404bf|MUSIC|Ray of Light|5.0|1998-11-3|POP|Madonna
+3e176c7f-5586-404d-9f3c-ff92048fd295|MUSIC|Revolver|10.0|1966-6-25|ROCK|Beatles
+a9706ff3-f0c0-4673-b997-25b94409b4fd|MUSIC|A night at the Opera|8.0|1975-3-21|ROCK|Queen
+35d0f0fa-4ff5-4172-b756-78bee48e0fd2|MUSIC|Si|7.0|2018-2-8|CLASSIC|Andrea Bocelli
+fe393264-9122-4df1-a3d8-c575e2084635|MUSIC|Le secret|5.0|2013-2-11|CLASSIC|Lara Fabian
+9afd2d31-a5b5-4a44-9202-f7a11a39c306|MUSIC|Ederlezi|4.0|1998-3-25|ETHNIC|Goran Bregovic
+68f04ea7-e6ff-4b63-8d64-21fedde98d85|MUSIC|Desire|7.0|1976-5-21|ETHNIC|Bob Dylan
+c0b8de34-d9ba-4c40-8bc5-ef11d4adf983|MUSIC|Deluxe|12.0|2017-5-5|ETHNIC|Ed Sheeran

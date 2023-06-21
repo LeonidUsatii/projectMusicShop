@@ -12,6 +12,5 @@ public interface OrderRepository extends CrudRepository<Order> {
     @Override
     void save(Order model);
 
-    @Override
     Order findById(String id);
 }

@@ -1,11 +1,7 @@
 package de.ait.repositories.products;
-
-import de.ait.models.Film;
-import de.ait.models.Product;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import de.ait.models.*;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsRepositoryTextFileImpl implements ProductsRepository {
@@ -17,7 +13,30 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
 
     @Override
     public List<Product> findAll() {
-        return null;
+
+        List<Product> products = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                String[] parsed = line.split("\\|");
+                String id  = parsed[0];
+                Category category = Category.valueOf(parsed[1]);
+                String title  = parsed[2];
+                double price  = Double.parseDouble(parsed[3]);
+                String releaseYear  = parsed[4];
+
+                products.add(new Product(id, category, title, price, releaseYear)); // положили пользователя в список
+                line = bufferedReader.readLine(); // считали следующую строку
+            }
+        } catch (IOException e) {
+            System.err.println("Произошла ошибка");
+        }
+
+        return products;
     }
 
     @Override
@@ -34,12 +53,12 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
             bufferedWriter.newLine();
 
         } catch (IOException e) {
-            System.err.println("Произошла ошибка");
+            throw new IllegalArgumentException("Проблемы с файлом");
         }
     }
 
     @Override
-    public Product findById(String id) {
+    public Product findByTitle(String title) {
         return null;
     }
 }

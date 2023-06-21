@@ -1,10 +1,9 @@
 package de.ait.repositories.films;
 
-import de.ait.models.Film;
+import de.ait.models.*;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmsRepositoryTextFileImpl implements FilmsRepository{
@@ -17,7 +16,29 @@ public class FilmsRepositoryTextFileImpl implements FilmsRepository{
 
     @Override
     public List<Film> findAll() {
-        return null;
+        List<Film> films = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                String[] parsed = line.split("\\|");
+                String id  = parsed[0];
+                Category category = Category.valueOf(parsed[1]);
+                String title = parsed[2];
+                double price  = Double.parseDouble(parsed[3]);
+                String releaseYear  = parsed[4];
+                GenreOfFilm genreOfFilm = GenreOfFilm.valueOf(parsed[5]);
+                films.add(new Film(new Product(id, category, title, price, releaseYear), genreOfFilm));
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Проблемы с файлом");
+        }
+
+        return films;
     }
 
     @Override
@@ -28,19 +49,21 @@ public class FilmsRepositoryTextFileImpl implements FilmsRepository{
 
             String filmObject = "";
 
-            filmObject = film.getProductInfo().getId() + "|" + film.getProductInfo() + "|" + film.getGenre();
+            filmObject = film.getProductInfo().getId() + "|" + film.getProductInfo().getCategory()
+                    + "|" + film.getProductInfo().getTitle() + "|" + film.getProductInfo().getPrice()
+                    + "|" + film.getProductInfo().getReleaseYear() + "|" + film.getGenre();
 
             bufferedWriter.write(filmObject);
             bufferedWriter.newLine();
 
         } catch (IOException e) {
-            System.err.println("Произошла ошибка");
+            throw new IllegalArgumentException("Проблемы с файлом");
         }
 
     }
 
     @Override
-    public Film findById(String id) {
+    public Film findByTitle(String title) {
         return null;
     }
 }

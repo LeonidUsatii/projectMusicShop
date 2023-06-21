@@ -3,7 +3,6 @@ package de.ait.services.BookService;
 import de.ait.models.*;
 import de.ait.repositories.books.BooksRepository;
 import de.ait.repositories.products.ProductsRepository;
-import de.ait.services.Service;
 
 import java.util.List;
 
@@ -26,14 +25,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Product> getProducts() {
-        return null;
+    public List<Book> getProducts() {
+        return booksRepository.findAll();
     }
 
-//    @Override
-//    public List<Book> getBooks() {
-//
-//        return booksRepository.findAll();
-//
-//    }
 }

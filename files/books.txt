@@ -1,11 +1,11 @@
-85bf9b0f-17db-4e45-b5e3-864771a8b486|Product{, category=BOOK, title='Бемби', price=15.0, releaseYear='2023-05-18'}|Зальтен Феликс|KIDS
-7899789c-2d57-4f40-b787-24e37c34a67d|Product{, category=BOOK, title='Крестный отец', price=5.0, releaseYear='2023-06-15'}|Пьюзо Марио|DETECTIVE
-113431bc-3b70-4eaa-b664-2b034746b2b2|Product{, category=BOOK, title='Одиночество мага', price=27.0, releaseYear='2023-06-05'}|Перумов Ник|FANTASY
-33fb0e9b-8522-4e64-a2c0-9014c218d815|Product{, category=BOOK, title=' Дюна', price=20.0, releaseYear='2020-03-08'}|Герберт Фрэнк|FANTASY
-183544cc-e40b-4ef8-9e8a-fec68894addc|Product{, category=BOOK, title='Мартин Иден', price=3.0, releaseYear='2023-09-16'}|Лондон Джек|NOVEL
-0acba053-5d03-44ad-a666-78769e0193fd|Product{, category=BOOK, title='Огненный остров', price=10.0, releaseYear='2022-07-18'}|Дюма Александр|NOVEL
-18026344-bb8e-4beb-a909-18d45b9f43f2|Product{, category=BOOK, title='Учимся кодить на JavaScript', price=13.0, releaseYear='2019-07-15'}|Мориц Джереми|EDUCATION
-f849daf0-95f2-4ef4-a021-edc5a09d586a|Product{, category=BOOK, title='Новые возможности JavaScript', price=30.0, releaseYear='2023-02-24'}|Краудер Ти Джей|EDUCATION
-be07aa44-a68b-4dd5-8d2e-093714fdaa5d|Product{, category=BOOK, title='Илиада. Одиссея', price=5.0, releaseYear='2023-07-18'}|	Гомер|POETRY
-105fec38-a7e7-42c8-93d4-2e292ebb0f34|Product{, category=BOOK, title='Рубаи', price=4.0, releaseYear='2022-08-19'}|	Хайям Омар|POETRY
-391d054b-421b-4323-8261-fe3d57a6a7f2|Product{, category=BOOK, title='Приключения барона Мюнхгаузена', price=10.0, releaseYear='2019-04-23'}|Распе Рудольф Эрих|KIDS
+76144eb8-a42f-4f3c-b46c-a916f4d05497|BOOK|Бемби|15.0|2023-05-18|Зальтен Феликс|KIDS
+8b604ce5-40fb-421c-8731-ee5757edcdcc|BOOK|Крестный отец|5.0|2023-06-15|Пьюзо Марио|DETECTIVE
+bf709d3e-cdb6-4084-ac19-f06f5b8633e4|BOOK|Одиночество мага|27.0|2023-06-05|Перумов Ник|FANTASY
+ac0b5e48-88cd-4659-bcc2-e6b2097c0baf|BOOK|Дюна|20.0|2020-03-08|Герберт Фрэнк|FANTASY
+16513a4c-7b2f-4af1-96ad-f44e57a32b6f|BOOK|Мартин Иден|3.0|2023-09-16|Лондон Джек|NOVEL
+9384dcf5-d56c-46cc-9b54-6d679d73be69|BOOK|Огненный остров|10.0|2022-07-18|Дюма Александр|NOVEL
+4e0f45a1-15b9-4fe5-8055-a052389d51ba|BOOK|Учимся кодить на JavaScript|13.0|2019-07-15|Мориц Джереми|EDUCATION
+afe688c2-e1d9-45c4-b6fe-b03db7c7da8e|BOOK|Новые возможности JavaScript|30.0|2023-02-24|Краудер Ти Джей|EDUCATION
+508771d6-bf7b-4515-a649-1fe751d2dd21|BOOK|Илиада. Одиссея|5.0|2023-07-18|Гомер|POETRY
+53d586b7-e6be-4723-be2f-24315b3fd204|BOOK|Рубаи|4.0|2022-08-19|Хайям Омар|POETRY
+b1e1bbeb-1dcb-41c6-89cb-c976141a4056|BOOK|Приключения барона Мюнхгаузена|10.0|2019-04-23|Распе Рудольф Эрих|KIDS

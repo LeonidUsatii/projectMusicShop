@@ -1,8 +1,8 @@
 package de.ait.models;
 public class Film {
-    private Product productInfo;
+    private final Product productInfo;
 
-    private GenreOfFilm genre;
+    private final GenreOfFilm genre;
 
     public Film(Product productInfo, GenreOfFilm genre) {
         this.productInfo = productInfo;

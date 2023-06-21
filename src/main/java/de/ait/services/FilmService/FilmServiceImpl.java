@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FilmServiceImpl implements FilmService {
 
-    private FilmsRepository filmsRepository;
+    private final FilmsRepository filmsRepository;
     private final ProductsRepository productsRepository;
 
     public FilmServiceImpl(FilmsRepository filmsRepository, ProductsRepository productsRepository) {
@@ -26,14 +26,9 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Product> getProducts() {
-        return null;
+    public List<Film> getProducts() {
+
+        return filmsRepository.findAll();
     }
 
-//    @Override
-//    public List<Book> getBooks() {
-//
-//        return booksRepository.findAll();
-//
-//    }
 }

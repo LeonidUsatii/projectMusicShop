@@ -1,11 +1,11 @@
-070322a7-8fa6-4bf5-b1bb-95f9c649ec01|Product{, category=FILM, title='Я работаю на кладбище', price=2.0, releaseYear='2020-05-12'}|COMEDY
-957b7cb1-80c1-4ea9-be9c-ec5d906ce4b8|Product{, category=FILM, title='Любовь и голуби', price=5.0, releaseYear='1984-05-14'}|COMEDY
-e57e432f-3d0e-43d2-bec4-915cece6da78|Product{, category=FILM, title='Всё под контролем', price=4.0, releaseYear='2023-02-05'}|ACTION
-11dfc2ad-9ca8-480b-b8c1-8d60607f52f7|Product{, category=FILM, title='Бэтмен будущего: Возвращение Джокера', price=4.0, releaseYear='2000-11-05'}|FANTASTIC
-3d76ef98-6f31-4185-8945-d8c6b5c1e9f9|Product{, category=FILM, title='Загадочная кожа', price=5.0, releaseYear='2004-05-13'}|THRILLER
-33ef8d59-d613-41e9-abed-f746f206eeec|Product{, category=FILM, title='Кровавый папочка', price=3.0, releaseYear='2003-08-14'}|THRILLER
-5ef55cf9-9de0-4755-8929-b34130b2fd49|Product{, category=FILM, title='Пацанская история', price=5.0, releaseYear='2022-09-06'}|COMEDY
-37075a45-5d70-4a7a-a946-1cd28ed832f4|Product{, category=FILM, title='Драйв', price=3.0, releaseYear='1997-03-22'}|FANTASTIC
-a81ff832-e511-4db9-9f75-be90929a73d4|Product{, category=FILM, title='Ловец снов', price=1.0, releaseYear='2003-10-15'}|FANTASTIC
-ead8899d-2970-45cd-b9ce-be22779adbdb|Product{, category=FILM, title='Волк', price=4.0, releaseYear='1994-05-08'}|THRILLER
-c8bc604a-d645-46ed-ada7-837a354e9da0|Product{, category=FILM, title='Дикая река', price=5.0, releaseYear='1994-09-19'}|THRILLER
+ec2b9b98-b450-408e-b969-00d33264ebb1|FILM|Я работаю на кладбище|2.0|2020-05-12|COMEDY
+1f864a48-4303-485e-856c-782435c3c41a|FILM|Любовь и голуби|5.0|1984-05-14|COMEDY
+a6f5d2b4-0c10-4f14-8063-3b8ad2edcc20|FILM|Всё под контролем|4.0|2023-02-05|ACTION
+97271977-06c1-4072-aa20-e4462f73ab5f|FILM|Возвращение Джокера|4.0|2000-11-05|FANTASTIC
+623f4f16-4659-4ca3-8ff6-f9ddf08eebd7|FILM|Загадочная кожа|5.0|2004-05-13|THRILLER
+b0e5610f-e419-40c3-9fea-e1d3760b83e4|FILM|Кровавый папочка|3.0|2003-08-14|THRILLER
+b5428a55-b8ef-40c2-8c6f-476b520a9c04|FILM|Пацанская история|5.0|2022-09-06|COMEDY
+fbc3d833-543f-4b36-810b-a595c2b56baf|FILM|Драйв|3.0|1997-03-22|FANTASTIC
+a084f7e8-6de0-44b4-add3-089c3d7976c6|FILM|Ловец снов|1.0|2003-10-15|FANTASTIC
+1893be1c-b744-4ff6-9231-6c25aa31ca09|FILM|Волк|4.0|1994-05-08|THRILLER
+b3c9d8eb-7ba6-4ebe-bced-73b3a2f2ea43|FILM|Дикая река|5.0|1994-09-19|THRILLER

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MusicServiceImpl implements MusicService {
 
-   private MusicsRepository musicsRepository;
+   private final MusicsRepository musicsRepository;
 
     private final ProductsRepository productsRepository;
 
@@ -28,14 +28,9 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public List<Product> getProducts() {
-        return null;
+    public List<Music> getProducts() {
+
+        return musicsRepository.findAll();
     }
 
-//    @Override
-//    public List<Book> getBooks() {
-//
-//        return booksRepository.findAll();
-//
-//    }
 }

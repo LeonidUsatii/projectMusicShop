@@ -11,6 +11,6 @@ public interface BooksRepository extends CrudRepository<Book> {
     @Override
     void save(Book book);
     @Override
-    Book findById(String id);
+    Book findByTitle(String title);
 
 }

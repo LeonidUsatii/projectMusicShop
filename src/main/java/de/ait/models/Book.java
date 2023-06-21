@@ -2,9 +2,9 @@ package de.ait.models;
 
 public class Book {
 
-    private Product productInfo;
+    private final Product productInfo;
     private String author;
-    private GenreOfBook genreOfBook;
+    private final GenreOfBook genreOfBook;
 
     public Book(Product productInfo, String author, GenreOfBook genreOfBook) {
 

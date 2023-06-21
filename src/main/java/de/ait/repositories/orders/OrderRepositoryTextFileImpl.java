@@ -17,6 +17,11 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
     }
 
     @Override
+    public Order findByTitle(String title) {
+        return null;
+    }
+
+    @Override
     public Order findById(String id) {
         return null;
     }

@@ -1,19 +1,21 @@
 package de.ait.models;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 
-public class Order { // заказ
-    private String id;
-    private LocalDateTime dateTime;
-    private String goodId;
-    private String userId;
 
-    public Order(LocalDateTime dateTime, String goodId, String userId) {
-        this.id = UUID.randomUUID().toString();
+public class Order {
+    private final String id;
+    private final LocalDateTime dateTime;
+
+    private final String productId;
+    private final String userId;
+
+    public Order(String id, LocalDateTime dateTime, String productId, String userId) {
+
+        this.id = id;
         this.dateTime = dateTime;
-        this.goodId = goodId;
+        this.productId = productId;
         this.userId = userId;
     }
 
@@ -27,9 +29,8 @@ public class Order { // заказ
         return dateTime;
     }
 
-    public String getGoodId() {
-
-        return goodId;
+    public String getProductId() {
+        return productId;
     }
 
     public String getUserId() {
@@ -37,13 +38,5 @@ public class Order { // заказ
         return userId;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id='" + id + '\'' +
-                ", dateTime=" + dateTime +
-                ", goodId='" + goodId + '\'' +
-                ", userId='" + userId + '\'' +
-                '}';
-    }
+
 }

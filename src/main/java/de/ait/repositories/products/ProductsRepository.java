@@ -14,5 +14,5 @@ public interface ProductsRepository extends CrudRepository<Product> {
     void save(Product model);
 
     @Override
-    Product findById(String id);
+    Product findByTitle(String title);
 }

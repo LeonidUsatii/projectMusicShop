@@ -8,12 +8,19 @@ import de.ait.repositories.musics.MusicsRepository;
 import de.ait.repositories.musics.MusicsRepositoryTextFileImpl;
 import de.ait.repositories.products.ProductsRepository;
 import de.ait.repositories.products.ProductsRepositoryTextFileImpl;
+import de.ait.repositories.users.UsersRepository;
+import de.ait.repositories.users.UsersRepositoryTextFileImpl;
 import de.ait.services.BookService.BookService;
 import de.ait.services.BookService.BookServiceImpl;
 import de.ait.services.FilmService.FilmService;
 import de.ait.services.FilmService.FilmServiceImpl;
 import de.ait.services.MusicService.MusicService;
 import de.ait.services.MusicService.MusicServiceImpl;
+import de.ait.services.ProductService.ProductService;
+import de.ait.services.ProductService.ProductServiceImpl;
+import de.ait.services.UserService.UserService;
+import de.ait.services.UserService.UserServiceImpl;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +28,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        UsersRepository usersRepository = new UsersRepositoryTextFileImpl("files/users.txt");
+        UserService userService = new UserServiceImpl(usersRepository);
+
         ProductsRepository productsRepository = new ProductsRepositoryTextFileImpl("files/products.txt");
+        ProductService productService = new ProductServiceImpl(productsRepository);
 
         BooksRepository booksRepository = new BooksRepositoryTextFileImpl("files/books.txt");
         BookService bookService = new BookServiceImpl(booksRepository, productsRepository);
@@ -33,22 +44,69 @@ public class Main {
         FilmService filmService = new FilmServiceImpl(filmsRepository, productsRepository);
 
         while (true) {
-            System.out.println("1. Просмотреть товары");
-            System.out.println("2. Добавить новый товар");
+            System.out.println();
+            System.out.println("Приветствуем в нашем магазине, для совершения покупок, " +
+                    "нужно авторизоваться.");
+            System.out.println();
+            System.out.println("1. Создать личный кабинет:");
+            System.out.println("2. Просмотреть продукцию");
+            System.out.println("3. Добавить новый товар");
             System.out.println("0. Выход");
             int command = scanner.nextInt();
             scanner.nextLine();
 
             switch (command) {
                 case 1:
-                    System.out.println("Выводим  товары");
-                    List<Product> products = bookService.getProducts();
+                    System.out.println("Авторизоваться:");
 
-                    for (Product product : products) {
-                        System.out.println(product);
-                    }
+                    System.out.println("Введите имя: ");
+                    String firstName = scanner.nextLine();
+
+                    System.out.println("Введите фамилию: ");
+                    String lastName = scanner.nextLine();
+
+                    System.out.println("Введите email: ");
+                    String email = scanner.nextLine();
+
+                    System.out.println("Введите пароль: ");
+                    String password = scanner.nextLine();
+
+                    userService.addUser(firstName, lastName, email, password);
+
                     break;
+
                 case 2:
+                    System.out.println("1. Просмотреть всю продукцию");
+                    System.out.println("2. Просмотреть книги");
+                    System.out.println("3. Просмотреть музыкальную продукцию");
+                    System.out.println("4. Просмотреть фильмы");
+
+                    command = scanner.nextInt();
+                    scanner.nextLine();
+
+                    switch (command) {
+                        case 1:
+                            List<Product> products = productService.getProducts();
+                            System.out.println(products);
+                            break;
+                        case 2:
+                            List<Book> books = bookService.getProducts();
+                            System.out.println(books);
+                            break;
+                        case 3:
+                            List<Music> music = musicService.getProducts();
+                            System.out.println(music);
+                            break;
+                        case 4:
+                            List<Film> films = filmService.getProducts();
+                            System.out.println(films);
+                            break;
+
+                    }
+
+                    System.out.println();
+                    break;
+                case 3:
                    System.out.println("Добавляем новый товар");
 
                     System.out.println("Выберите категорию товара: ");

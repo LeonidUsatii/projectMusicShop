@@ -13,6 +13,5 @@ public interface ReviewsRepository extends CrudRepository<Review> {
     @Override
     void save(Review model);
 
-    @Override
     Review findById(String id);
 }
