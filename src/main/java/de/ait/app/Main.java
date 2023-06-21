@@ -32,7 +32,6 @@ public class Main {
         FilmsRepository filmsRepository = new FilmsRepositoryTextFileImpl("files/films.txt");
         FilmService filmService = new FilmServiceImpl(filmsRepository, productsRepository);
 
-
         while (true) {
             System.out.println("1. Просмотреть товары");
             System.out.println("2. Добавить новый товар");
@@ -60,6 +59,7 @@ public class Main {
 
                     command = scanner.nextInt();
                     scanner.nextLine();
+
                     Category category = null;
 
                     switch (command) {

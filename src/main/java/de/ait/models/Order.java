@@ -3,12 +3,7 @@ package de.ait.models;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-/**
- * 6/20/2023
- * cohort25
- *
- * @author Marsel Sidikov (AIT TR)
- */
+
 public class Order { // заказ
     private String id;
     private LocalDateTime dateTime;
