@@ -23,6 +23,11 @@ public class Product {
             System.err.println("Введите категорию товара");
         }
 
+        if (title != null) {
+            this.title = title;
+        } else {
+            System.err.println("Введите название");
+        }
 
         if (price > 0) {
             this.price = price;
