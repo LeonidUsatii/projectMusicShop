@@ -1,0 +1,11 @@
+070322a7-8fa6-4bf5-b1bb-95f9c649ec01|Product{, category=FILM, title='Я работаю на кладбище', price=2.0, releaseYear='2020-05-12'}|COMEDY
+957b7cb1-80c1-4ea9-be9c-ec5d906ce4b8|Product{, category=FILM, title='Любовь и голуби', price=5.0, releaseYear='1984-05-14'}|COMEDY
+e57e432f-3d0e-43d2-bec4-915cece6da78|Product{, category=FILM, title='Всё под контролем', price=4.0, releaseYear='2023-02-05'}|ACTION
+11dfc2ad-9ca8-480b-b8c1-8d60607f52f7|Product{, category=FILM, title='Бэтмен будущего: Возвращение Джокера', price=4.0, releaseYear='2000-11-05'}|FANTASTIC
+3d76ef98-6f31-4185-8945-d8c6b5c1e9f9|Product{, category=FILM, title='Загадочная кожа', price=5.0, releaseYear='2004-05-13'}|THRILLER
+33ef8d59-d613-41e9-abed-f746f206eeec|Product{, category=FILM, title='Кровавый папочка', price=3.0, releaseYear='2003-08-14'}|THRILLER
+5ef55cf9-9de0-4755-8929-b34130b2fd49|Product{, category=FILM, title='Пацанская история', price=5.0, releaseYear='2022-09-06'}|COMEDY
+37075a45-5d70-4a7a-a946-1cd28ed832f4|Product{, category=FILM, title='Драйв', price=3.0, releaseYear='1997-03-22'}|FANTASTIC
+a81ff832-e511-4db9-9f75-be90929a73d4|Product{, category=FILM, title='Ловец снов', price=1.0, releaseYear='2003-10-15'}|FANTASTIC
+ead8899d-2970-45cd-b9ce-be22779adbdb|Product{, category=FILM, title='Волк', price=4.0, releaseYear='1994-05-08'}|THRILLER
+c8bc604a-d645-46ed-ada7-837a354e9da0|Product{, category=FILM, title='Дикая река', price=5.0, releaseYear='1994-09-19'}|THRILLER
