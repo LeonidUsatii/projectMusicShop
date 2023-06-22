@@ -1,7 +1,5 @@
 package de.ait.models;
 
-import java.time.LocalDateTime;
-
 public class DeliveryOffGoods {
     private String id;
 

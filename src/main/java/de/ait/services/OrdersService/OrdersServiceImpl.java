@@ -1,8 +1,8 @@
 package de.ait.services.OrdersService;
 
 import de.ait.models.*;
-import de.ait.repositories.CashWarrant.CashWarrantRepository;
-import de.ait.repositories.DeliveryOffGoods.DeliveryOffGoodsRepository;
+import de.ait.repositories.cashWarrant.CashWarrantRepository;
+import de.ait.repositories.deliveryOffGoods.DeliveryOffGoodsRepository;
 import de.ait.repositories.orders.OrderRepository;
 import de.ait.repositories.products.ProductsRepository;
 import de.ait.repositories.users.UsersRepository;
@@ -16,6 +16,7 @@ public class OrdersServiceImpl implements OrdersService {
     private final UsersRepository usersRepository;
     private final ProductsRepository productsRepository;
     private final OrderRepository ordersRepository;
+
     private final DeliveryOffGoodsRepository deliveryOffGoodsRepository;
 
     private final CashWarrantRepository cashWarrantRepository;
@@ -31,14 +32,14 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public String makeOrder(String email, String title) {
+    public String makeOrder(String email, String productTitle) {
         User user = usersRepository.findByEmail(email);
 
         if (user == null) {
             throw new IllegalArgumentException("Пользователь не найден");
         }
 
-        Product product = productsRepository.findByTitle(title);
+        Product product = productsRepository.findByTitle(productTitle);
 
         if (product == null) {
             throw new IllegalArgumentException("Товар не найден");
@@ -61,18 +62,18 @@ public class OrdersServiceImpl implements OrdersService {
         cashWarrantRepository.save(cashWarrant);
 
         return "Квитанция № " + order.getId() + ", заказ был сделан на "
-                + title + " в " + order.getDateTime();
+                + productTitle + " в " + order.getDateTime();
     }
 
     @Override
-    public String makeOrder(String email, String title, String address) {
+    public String makeOrder(String email, String productTitle, String address) {
         User user = usersRepository.findByEmail(email);
 
         if (user == null) {
             throw new IllegalArgumentException("Пользователь не найден");
         }
 
-        Product product = productsRepository.findByTitle(title);
+        Product product = productsRepository.findByTitle(productTitle);
 
         if (product == null) {
             throw new IllegalArgumentException("Товар не найден");
@@ -103,7 +104,7 @@ public class OrdersServiceImpl implements OrdersService {
         deliveryOffGoodsRepository.save(deliveryOffGoods);
 
         return "Квитанция № " + order.getId() + ", заказ был сделан на "
-                + title + " в " + order.getDateTime()  + " дата доставки "
+                + productTitle + " в " + order.getDateTime()  + " дата доставки "
                 + LocalDateTime.now().plusDays(3);
     }
 }

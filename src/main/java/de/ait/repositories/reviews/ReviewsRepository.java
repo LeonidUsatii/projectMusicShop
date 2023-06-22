@@ -11,7 +11,6 @@ public interface ReviewsRepository extends CrudRepository<Review> {
     List<Review> findAll();
 
     @Override
-    void save(Review model);
+    void save(Review review);
 
-    Review findById(String id);
 }
