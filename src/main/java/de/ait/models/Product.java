@@ -1,5 +1,6 @@
 package de.ait.models;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Product implements Comparable<Product>{
@@ -111,5 +112,18 @@ public class Product implements Comparable<Product>{
     public int compareTo(Product o) {
         return Double.compare(o.price,this.price);
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Double.compare(product.price, price) == 0 && Objects.equals(id, product.id) && category == product.category && Objects.equals(title, product.title) && Objects.equals(releaseYear, product.releaseYear);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, category, title, price, releaseYear);
     }
 }

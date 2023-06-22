@@ -1,5 +1,7 @@
 package de.ait.models;
 
+import java.util.Objects;
+
 public class Book implements Comparable<Book>{
 
     private final Product productInfo;
@@ -44,5 +46,18 @@ public class Book implements Comparable<Book>{
     @Override
     public int compareTo(Book o) {
         return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(productInfo, book.productInfo) && Objects.equals(author, book.author) && genreOfBook == book.genreOfBook;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productInfo, author, genreOfBook);
     }
 }
