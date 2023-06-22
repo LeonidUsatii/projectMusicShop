@@ -8,7 +8,6 @@ public class User {
     private String lastName;
     private  String email;
     private  String password;
-    private String name;
 
     public User(String id, String firstName, String lastName,  String email, String password) {
 
@@ -71,14 +70,6 @@ public class User {
             System.err.println("Введите password");
         }
 
-    }
-
-    public User(String name) {
-        if (name != null) {
-            this.name = name;
-        } else {
-            System.err.println("Введите имя");
-        }
     }
 
     public String getId() {

@@ -2,21 +2,35 @@ package de.ait.models;
 
 import java.time.LocalDateTime;
 
-
-
 public class Order {
-    private final String id;
+    private  String id;
+
     private final LocalDateTime dateTime;
 
-    private final String productId;
-    private final String userId;
+    private  String productId;
+
+    private  String userId;
 
     public Order(String id, LocalDateTime dateTime, String productId, String userId) {
 
-        this.id = id;
+        if (id != null) {
+            this.id = id;
+        } else {
+            System.err.println("Введите id");
+        }
         this.dateTime = dateTime;
-        this.productId = productId;
-        this.userId = userId;
+
+        if (productId != null) {
+            this.productId = productId;
+        } else {
+            System.err.println("Введите productId");
+        }
+
+        if (userId != null) {
+            this.userId = userId;
+        } else {
+            System.err.println("Введите userId");
+        }
     }
 
     public String getId() {
@@ -38,5 +52,13 @@ public class Order {
         return userId;
     }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", dateTime=" + dateTime +
+                ", productId='" + productId + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }

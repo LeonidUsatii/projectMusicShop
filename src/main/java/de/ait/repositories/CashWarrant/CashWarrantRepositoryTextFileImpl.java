@@ -1,20 +1,24 @@
-package de.ait.repositories.products;
-import de.ait.models.*;
+package de.ait.repositories.CashWarrant;
+
+import de.ait.models.CashWarrant;
+import de.ait.models.Category;
+import de.ait.models.Product;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsRepositoryTextFileImpl implements ProductsRepository {
+public class CashWarrantRepositoryTextFileImpl implements CashWarrantRepository {
 
     private String fileName;
-    public ProductsRepositoryTextFileImpl(String fileName) {
+    public CashWarrantRepositoryTextFileImpl(String fileName) {
         this.fileName = fileName;
     }
 
     @Override
-    public List<Product> findAll() {
+    public List<CashWarrant> findAll() {
 
-        List<Product> products = new ArrayList<>();
+        List<CashWarrant> products = new ArrayList<>();
 
         try (FileReader fileReader = new FileReader(fileName);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -29,7 +33,7 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
                 double price  = Double.parseDouble(parsed[3]);
                 String releaseYear  = parsed[4];
 
-                products.add(new Product(id, category, title, price, releaseYear)); // положили пользователя в список
+                //products.add(new Product(id, category, title, price, releaseYear)); // положили пользователя в список
                 line = bufferedReader.readLine(); // считали следующую строку
             }
         } catch (IOException e) {
@@ -40,14 +44,14 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
     }
 
     @Override
-    public void save(Product product) {
+    public void save(CashWarrant product) {
         try (BufferedWriter bufferedWriter = new BufferedWriter
                 (new FileWriter(fileName, true));) {
 
             String productObject = "";
 
-            productObject = product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
-                    + "|" + product.getPrice() + "|" + product.getReleaseYear();
+//            productObject = product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
+//                    + "|" + product.getPrice() + "|" + product.getReleaseYear();
 
             bufferedWriter.write(productObject);
             bufferedWriter.newLine();
@@ -58,13 +62,18 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
     }
 
     @Override
-    public Product findByTitle(String title) {
-        List<Product> products = findAll();
-        for (Product product : products) {
-            if (product.getTitle().equals(title)) {
-                return product;
-            }
-        }
+    public CashWarrant findByTitle(String title) {
         return null;
     }
+
+//    @Override
+//    public Product findByTitle(String title) {
+//        List<Product> products = findAll();
+//        for (Product product : products) {
+//            if (product.getTitle().equals(title)) {
+//                return product;
+//            }
+//        }
+//        return null;
+//    }
 }

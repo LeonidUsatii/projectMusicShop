@@ -11,7 +11,7 @@ public interface UsersRepository extends CrudRepository<User> {
     List<User> findAll();
 
     @Override
-    void save(User model);
+    void save(User user);
 
 
     User findByEmail(String email);

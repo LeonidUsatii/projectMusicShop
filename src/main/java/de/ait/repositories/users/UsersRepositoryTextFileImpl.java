@@ -66,6 +66,12 @@ public class UsersRepositoryTextFileImpl implements UsersRepository {
 
     @Override
     public User findByEmail(String email) {
+        List<User> users = findAll();
+        for (User user : users) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
         return null;
     }
 }

@@ -12,6 +12,6 @@ public interface MusicsRepository extends CrudRepository<Music> {
     @Override
     void save(Music model);
 
-    @Override
-    Music findByTitle(String title);
+//    @Override
+//    Music findByTitle(String title);
 }
