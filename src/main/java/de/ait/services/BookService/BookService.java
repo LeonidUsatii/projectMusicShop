@@ -10,4 +10,6 @@ public interface BookService extends EService <Book>{
     @Override
     List<Book> getProducts();
 
+    void sortBookPrice();
+
 }

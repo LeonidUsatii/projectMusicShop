@@ -29,4 +29,10 @@ public class BookServiceImpl implements BookService {
         return booksRepository.findAll();
     }
 
+    @Override
+    public void sortBookPrice() {
+        List<Book> books = booksRepository.findAll();
+    }
+
+
 }

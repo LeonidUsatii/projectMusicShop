@@ -16,7 +16,6 @@ public class OrdersServiceImpl implements OrdersService {
     private final UsersRepository usersRepository;
     private final ProductsRepository productsRepository;
     private final OrderRepository ordersRepository;
-
     private final DeliveryOffGoodsRepository deliveryOffGoodsRepository;
 
     private final CashWarrantRepository cashWarrantRepository;
