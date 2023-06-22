@@ -32,7 +32,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     @Override
-    public String makeOrder(String email, String title, boolean isDelivery) {
+    public String makeOrder(String email, String title) {
         User user = usersRepository.findByEmail(email);
 
         if (user == null) {
@@ -44,13 +44,6 @@ public class OrdersServiceImpl implements OrdersService {
         if (product == null) {
             throw new IllegalArgumentException("Товар не найден");
         }
-
-//        if(isDelivery == true) {
-//            DeliveryOffGoods deliveryOffGoods = new DeliveryOffGoods(
-//                    UUID.randomUUID().toString(),
-//
-//            );
-//        }
 
         Order order = new Order(
                 UUID.randomUUID().toString(),
@@ -70,5 +63,48 @@ public class OrdersServiceImpl implements OrdersService {
 
         return "Квитанция № " + order.getId() + ", заказ был сделан на "
                 + title + " в " + order.getDateTime();
+    }
+
+    @Override
+    public String makeOrder(String email, String title, String address) {
+        User user = usersRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new IllegalArgumentException("Пользователь не найден");
+        }
+
+        Product product = productsRepository.findByTitle(title);
+
+        if (product == null) {
+            throw new IllegalArgumentException("Товар не найден");
+        }
+
+        Order order = new Order(
+                UUID.randomUUID().toString(),
+                LocalDateTime.now(),
+                product.getId(),
+                user.getId()
+        );
+
+        CashWarrant cashWarrant = new CashWarrant(
+                UUID.randomUUID().toString(),
+                LocalDateTime.now(),
+                user.getId(),
+                product.getPrice());
+
+        DeliveryOffGoods deliveryOffGoods = new DeliveryOffGoods(
+                UUID.randomUUID().toString(),
+                address, product.getId(),
+                user.getId(),
+                LocalDateTime.now().plusDays(3).toString()
+        );
+
+        ordersRepository.save(order);
+        cashWarrantRepository.save(cashWarrant);
+        deliveryOffGoodsRepository.save(deliveryOffGoods);
+
+        return "Квитанция № " + order.getId() + ", заказ был сделан на "
+                + title + " в " + order.getDateTime()  + " дата доставки "
+                + LocalDateTime.now().plusDays(3);
     }
 }
