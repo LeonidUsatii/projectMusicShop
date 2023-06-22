@@ -2,7 +2,7 @@ package de.ait.models;
 
 import java.util.UUID;
 
-public class Product {
+public class Product implements Comparable<Product>{
     private String id;
 
     private Category category;
@@ -105,5 +105,11 @@ public class Product {
                 ", price=" + price +
                 ", releaseYear='" + releaseYear + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return Double.compare(o.price,this.price);
+
     }
 }

@@ -31,16 +31,12 @@ public class BookServiceImpl implements BookService {
         return booksRepository.findAll();
     }
 
-    @Override
-    public void sortByPrice() {
-
-    }
 
     @Override
-    public void sortBookPrice() {
+    public List<Book> sortByPrice() {
         List<Book> books = booksRepository.findAll();
-
-
+        List<Book> booksSorted = books.stream().sorted(Book::compareTo).toList();
+        return booksSorted;
     }
 
 

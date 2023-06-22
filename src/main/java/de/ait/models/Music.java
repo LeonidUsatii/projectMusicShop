@@ -1,6 +1,6 @@
 package de.ait.models;
 
-public class Music {
+public class Music implements Comparable<Music>{
     private Product productInfo;
 
     private GenreOfMusic genre;
@@ -33,5 +33,10 @@ public class Music {
                 ", genre=" + genre +
                 ", executor='" + executor + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Music o) {
+        return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
     }
 }

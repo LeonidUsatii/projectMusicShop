@@ -1,6 +1,6 @@
 package de.ait.models;
 
-public class Book {
+public class Book implements Comparable<Book>{
 
     private final Product productInfo;
     private String author;
@@ -39,5 +39,10 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", genreOfBook=" + genreOfBook +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
     }
 }

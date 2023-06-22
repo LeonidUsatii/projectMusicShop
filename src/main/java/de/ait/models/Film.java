@@ -1,5 +1,5 @@
 package de.ait.models;
-public class Film {
+public class Film implements Comparable <Film>{
     private final Product productInfo;
 
     private final GenreOfFilm genre;
@@ -25,5 +25,10 @@ public class Film {
                 "productInfo=" + productInfo +
                 ", genre=" + genre +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Film o) {
+            return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
     }
 }
