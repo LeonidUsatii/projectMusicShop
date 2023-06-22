@@ -33,4 +33,10 @@ public class MusicServiceImpl implements MusicService {
         return musicsRepository.findAll();
     }
 
+    @Override
+    public void sortByPrice() {
+        List<Music> musics = musicsRepository.findAll();
+
+    }
+
 }

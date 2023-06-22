@@ -31,4 +31,10 @@ public class FilmServiceImpl implements FilmService {
         return filmsRepository.findAll();
     }
 
+    @Override
+    public void sortByPrice() {
+        List<Film> films = filmsRepository.findAll();
+
+    }
+
 }

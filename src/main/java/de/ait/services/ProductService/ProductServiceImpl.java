@@ -1,4 +1,5 @@
 package de.ait.services.ProductService;
+import de.ait.models.Book;
 import de.ait.models.Product;
 import de.ait.repositories.products.ProductsRepository;
 import java.util.List;
@@ -16,6 +17,12 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProducts() {
 
         return productsRepository.findAll();
+    }
+
+    @Override
+    public void sortByPrice() {
+        List<Product> products = productsRepository.findAll();
+
     }
 
 }
