@@ -9,6 +9,7 @@ import de.ait.repositories.products.ProductsRepository;
 import de.ait.repositories.users.UsersRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -107,5 +108,9 @@ public class OrdersServiceImpl implements OrdersService {
         return "Квитанция № " + order.getId() + ", заказ был сделан на "
                 + productTitle + " в " + order.getDateTime()  + " дата доставки "
                 + LocalDateTime.now().plusDays(3);
+    }
+    @Override
+    public List<Order> getOrder() {
+        return ordersRepository.findAll();
     }
 }

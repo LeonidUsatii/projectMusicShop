@@ -8,4 +8,5 @@ public interface EService <T>{
     List<T> getProducts();
     List <T> sortByPrice();
     List<T> filterByValue(String value);
+
 }

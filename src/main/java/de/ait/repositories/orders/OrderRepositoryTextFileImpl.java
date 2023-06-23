@@ -2,10 +2,11 @@ package de.ait.repositories.orders;
 
 import de.ait.models.Film;
 import de.ait.models.Order;
+import de.ait.models.User;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepositoryTextFileImpl implements OrderRepository {
@@ -18,7 +19,27 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
 
     @Override
     public List<Order> findAll() {
-        return null;
+        List<Order> orders = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                String[] parsed = line.split("\\|");
+                String id = parsed[0];
+                LocalDate dateTime = LocalDate.parse(parsed[1]);
+                String productId = parsed[2];
+                String userId = parsed[3];
+                orders.add(new Order(id, dateTime.atStartOfDay(), productId, userId));
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Проблемы с файлом");
+        }
+
+        return orders;
     }
 
     @Override
