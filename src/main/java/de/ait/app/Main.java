@@ -200,6 +200,12 @@ public class Main {
                 List<Music> music = musicService.getProducts();
                 System.out.println(music);
                 break;
+            case 32:
+                System.out.println("Введите исполнителя: ");
+                String executor = scanner.nextLine();
+                List<Music> filterByExecutor = musicService.filterByValue(executor);
+                System.out.println(filterByExecutor);
+                break;
             case 31:
                 List<Music> sortByPriceMusic = musicService.sortByPrice();
                 System.out.println(sortByPriceMusic);

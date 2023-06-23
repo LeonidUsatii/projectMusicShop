@@ -42,7 +42,13 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public List<Music> filterByValue(String value) {
-        return null;
-    }
 
+        if (value == null) {
+            throw new IllegalArgumentException("Автор не найден");
+        }
+        List<Music> musics = musicsRepository.findAll();
+        return  musics.stream()
+                .filter(((music) -> music.getExecutor().equals(value)))
+                .toList();
+    }
 }

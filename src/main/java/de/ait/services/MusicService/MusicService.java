@@ -11,4 +11,9 @@ public interface MusicService extends EService<Music> {
 
     List<Music> getProducts();
 
+    @Override
+     List<Music> sortByPrice();
+
+    @Override
+    List<Music> filterByValue(String value);
 }
