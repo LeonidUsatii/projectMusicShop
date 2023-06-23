@@ -36,8 +36,7 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public List<Music> sortByPrice() {
         List<Music> musics = musicsRepository.findAll();
-        List<Music> musicSorted = musics.stream().sorted(Music::compareTo).toList();
-        return musicSorted;
+        return musics.stream().sorted().toList();
 
     }
 

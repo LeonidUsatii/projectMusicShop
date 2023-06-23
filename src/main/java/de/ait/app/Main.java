@@ -194,6 +194,10 @@ public class Main {
                 List<Music> music = musicService.getProducts();
                 System.out.println(music);
                 break;
+            case 31:
+                List<Music> sortByPriceMusic = musicService.sortByPrice();
+                System.out.println(sortByPriceMusic);
+              break;
             case 4:
                 List<Film> films = filmService.getProducts();
                 System.out.println(films);
