@@ -6,6 +6,7 @@ import de.ait.models.User;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,10 @@ public class OrderRepositoryTextFileImpl implements OrderRepository {
             while (line != null) {
                 String[] parsed = line.split("\\|");
                 String id = parsed[0];
-                LocalDate dateTime = LocalDate.parse(parsed[1]);
+                LocalDateTime dateTime = LocalDateTime.parse(parsed[1]);
                 String productId = parsed[2];
                 String userId = parsed[3];
-                orders.add(new Order(id, dateTime.atStartOfDay(), productId, userId));
+                orders.add(new Order(id, dateTime, productId, userId));
                 line = bufferedReader.readLine();
             }
         } catch (IOException e) {
