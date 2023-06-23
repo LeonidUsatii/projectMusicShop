@@ -121,6 +121,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Отчёты");
+                    reports(userService, scanner);
                     break;
                 case 0:
                     System.out.println("Выход");
@@ -407,5 +408,41 @@ public class Main {
 
         String review = scanner.nextLine();
         reviewService.addReview(email, title, review);
+    }
+    public static void reports(UserService userService,Scanner scanner){
+        System.out.println("1. Посмотреть пользователей");
+        System.out.println("2. Посмотреть документы по заказам");
+        System.out.println("3. Посмотреть документы по доставке");
+        System.out.println("4. Посмотреть приходно кассовые ордера");
+        System.out.println("5. Посмотреть отзывы");
+        System.out.println("6. Отчет по прибыли");
+
+        int command = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (command) {
+            case 1:
+                List<User> users = userService.getUser();
+                System.out.println(users);
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+        }
+
+
+
     }
 }
