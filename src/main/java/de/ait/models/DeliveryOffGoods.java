@@ -75,4 +75,5 @@ public class DeliveryOffGoods {
                 ", deliveryDate='" + deliveryDate + '\'' +
                 '}';
     }
+
 }

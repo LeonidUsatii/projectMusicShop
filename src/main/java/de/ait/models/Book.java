@@ -45,7 +45,14 @@ public class Book implements Comparable<Book>{
 
     @Override
     public int compareTo(Book o) {
-        return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
+        if(this.productInfo.getPrice() != o.productInfo.getPrice()) {
+            return Double.compare(this.productInfo.getPrice(), o.getProductInfo().getPrice());
+        } else  if(!this.productInfo.getTitle().equals(o.productInfo.getTitle())) {
+            return this.productInfo.getTitle().compareTo(o.productInfo.getTitle());
+        } else if(!this.author.equals(o.author)){
+            return this.author.compareTo(o.author);
+        }
+        return 0;
     }
 
     @Override

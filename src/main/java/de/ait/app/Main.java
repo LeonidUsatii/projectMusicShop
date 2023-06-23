@@ -118,20 +118,15 @@ public class Main {
                     addProducts(bookService,
                             musicService, filmService, scanner);
                     break;
-
                 case 6:
                     System.out.println("Отчёты");
-
-
                     break;
                 case 0:
                     System.out.println("Выход");
-
                     System.exit(0);
                 default:
                     System.out.println("Команда не распознана");
             }
-
         }
     }
 
@@ -150,7 +145,6 @@ public class Main {
         String password = scanner.nextLine();
 
         userService.addUser(firstName, lastName, email, password);
-
     }
 
     public static void viewProducts(ProductService productService,
@@ -159,19 +153,19 @@ public class Main {
                                     FilmService filmService,
                                     Scanner scanner) {
         System.out.println("1. Просмотреть всю продукцию");
-        System.out.println("11. Сортировка по стоимости");
+        System.out.println("11. Сортировка продуктов по стоимости");
 
         System.out.println("2. Просмотреть книги");
-        System.out.println("21. Сортировка по стоимости");
-        System.out.println("22. Фильтр по автору");
+        System.out.println("21. Сортировка книг по стоимости");
+        System.out.println("22. Фильтр книг по автору");
 
         System.out.println("3. Просмотреть музыкальную продукцию");
-        System.out.println("31. Сортировка по стоимости");
-        System.out.println("32. Фильтр по исполнителю");
+        System.out.println("31. Сортировка музыки по стоимости");
+        System.out.println("32. Фильтр музыки по исполнителю");
 
         System.out.println("4. Просмотреть фильмы");
-        System.out.println("41. Сортировка по стоимости");
-        System.out.println("42. Фильтр по жанру");
+        System.out.println("41. Сортировка фильмов по стоимости");
+        System.out.println("42. Фильтр фильмов по жанру");
 
         int command = scanner.nextInt();
         scanner.nextLine();
@@ -181,9 +175,17 @@ public class Main {
                 List<Product> products = productService.getProducts();
                 System.out.println(products);
                 break;
+            case 11:
+
+                break;
+
             case 2:
                 List<Book> books = bookService.getProducts();
                 System.out.println(books);
+                break;
+            case 21:
+                List<Book> sortByPrice = bookService.sortByPrice();
+                System.out.println(sortByPrice);
                 break;
             case 3:
                 List<Music> music = musicService.getProducts();
