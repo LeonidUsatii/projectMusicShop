@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class CashWarrant {
     private String id;
-    private LocalDateTime dateTime;
+    private final LocalDateTime dateTime;
 
     private String userId;
 

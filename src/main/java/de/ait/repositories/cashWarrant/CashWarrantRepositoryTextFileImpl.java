@@ -44,16 +44,17 @@ public class CashWarrantRepositoryTextFileImpl implements CashWarrantRepository 
     }
 
     @Override
-    public void save(CashWarrant product) {
+    public void save(CashWarrant cashWarrant) {
         try (BufferedWriter bufferedWriter = new BufferedWriter
                 (new FileWriter(fileName, true));) {
 
-            String productObject = "";
+            String cashWarrantObject = "";
 
-//            productObject = product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
-//                    + "|" + product.getPrice() + "|" + product.getReleaseYear();
+            cashWarrantObject = cashWarrant.getId() + "|" + cashWarrant.getDateTime() + "|"
+                    + cashWarrant.getUserId()
+                    + "|" + cashWarrant.getSum();
 
-            bufferedWriter.write(productObject);
+            bufferedWriter.write(cashWarrantObject);
             bufferedWriter.newLine();
 
         } catch (IOException e) {

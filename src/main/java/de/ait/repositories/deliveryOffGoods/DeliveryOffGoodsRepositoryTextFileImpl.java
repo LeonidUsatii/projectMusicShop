@@ -52,16 +52,16 @@ public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsR
     }
 
     @Override
-    public void save(DeliveryOffGoods product) {
+    public void save(DeliveryOffGoods delivery) {
         try (BufferedWriter bufferedWriter = new BufferedWriter
                 (new FileWriter(fileName, true));) {
 
-            String productObject = "";
+            String deliveryObject = "";
 
-//            productObject = product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
-//                    + "|" + product.getPrice() + "|" + product.getReleaseYear();
+            deliveryObject = delivery.getId() + "|" + delivery.getAddress() + "|" + delivery.getProductId()
+                    + "|" + delivery.getUserId() + "|" + delivery.getDeliveryDate();
 
-            bufferedWriter.write(productObject);
+            bufferedWriter.write(deliveryObject);
             bufferedWriter.newLine();
 
         } catch (IOException e) {
