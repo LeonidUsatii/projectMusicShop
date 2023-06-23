@@ -110,8 +110,14 @@ public class Product implements Comparable<Product>{
 
     @Override
     public int compareTo(Product o) {
-        return Double.compare(o.price,this.price);
-
+        if(this.price != o.price) {
+            return Double.compare(this.price, o.price);
+        } else  if(!this.title.equals(o.title)) {
+            return this.title.compareTo(o.title);
+        } else if(!this.category.equals(o.category)){
+            return this.category.compareTo(o.category);
+        }
+        return 0;
     }
 
     @Override
