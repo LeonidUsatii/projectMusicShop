@@ -39,9 +39,15 @@ public class Music implements Comparable<Music>{
 
     @Override
     public int compareTo(Music o) {
-        return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
+        if(this.productInfo.getPrice() != o.productInfo.getPrice()) {
+            return Double.compare(this.productInfo.getPrice(), o.getProductInfo().getPrice());
+        } else  if(!this.productInfo.getTitle().equals(o.productInfo.getTitle())) {
+            return this.productInfo.getTitle().compareTo(o.productInfo.getTitle());
+        } else if(!this.executor.equals(o.getExecutor())){
+            return this.executor.compareTo(o.getExecutor());
+        }
+        return 0;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,6 +55,7 @@ public class Music implements Comparable<Music>{
         Music music = (Music) o;
         return Objects.equals(productInfo, music.productInfo) && genre == music.genre && Objects.equals(executor, music.executor);
     }
+
 
     @Override
     public int hashCode() {
