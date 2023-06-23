@@ -21,6 +21,10 @@ import de.ait.repositories.users.UsersRepository;
 import de.ait.repositories.users.UsersRepositoryTextFileImpl;
 import de.ait.services.BookService.BookService;
 import de.ait.services.BookService.BookServiceImpl;
+import de.ait.services.CashWarrant.CashWarrantService;
+import de.ait.services.CashWarrant.CashWarrantServiceImpl;
+import de.ait.services.DeliveryOffGoods.DeliveryOffGoodsService;
+import de.ait.services.DeliveryOffGoods.DeliveryOffGoodsServiceImpl;
 import de.ait.services.FilmService.FilmService;
 import de.ait.services.FilmService.FilmServiceImpl;
 import de.ait.services.MusicService.MusicService;
@@ -57,8 +61,13 @@ public class Main {
         DeliveryOffGoodsRepository deliveryOffGoodsRepository = new
                 DeliveryOffGoodsRepositoryTextFileImpl("files/delivery.txt");
 
+        DeliveryOffGoodsService deliveryOffGoodsService = new
+                DeliveryOffGoodsServiceImpl(deliveryOffGoodsRepository);
+
         CashWarrantRepository cashWarrantRepository = new
                 CashWarrantRepositoryTextFileImpl("files/cash.txt");
+        CashWarrantService cashWarrantService = new
+                CashWarrantServiceImpl(cashWarrantRepository);
 
         ReviewsRepository reviewsRepository = new
                 ReviewsRepositoryTextFileImpl("files/reviews.txt");
@@ -120,7 +129,8 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Отчёты");
-                    reports(userService, ordersService, scanner);
+                    reports(userService, ordersService, cashWarrantService,
+                            deliveryOffGoodsService, reviewService,scanner);
                     break;
                 case 0:
                     System.out.println("Выход");
@@ -408,7 +418,10 @@ public class Main {
         String review = scanner.nextLine();
         reviewService.addReview(email, title, review);
     }
-    public static void reports(UserService userService,OrdersService ordersService,Scanner scanner){
+    public static void reports(UserService userService, OrdersService ordersService,
+                               CashWarrantService cashWarrantService,
+                               DeliveryOffGoodsService deliveryGoods,
+                               ReviewService reviewService, Scanner scanner){
         System.out.println("1. Посмотреть пользователей");
         System.out.println("2. Посмотреть документы по заказам");
         System.out.println("3. Посмотреть документы по доставке");
@@ -429,20 +442,21 @@ public class Main {
                 System.out.println(orders);
                 break;
             case 3:
-
+                List<DeliveryOffGoods> delivery = deliveryGoods.getOrder();
+                System.out.println(delivery);
                 break;
             case 4:
-
+                List<CashWarrant> cashWarrants = cashWarrantService.getOrder();
+                System.out.println(cashWarrants);
                 break;
             case 5:
-
+                List<Review> reviews = reviewService.getReview();
+                System.out.println(reviews);
                 break;
             case 6:
-
+                double sumOfPrice = cashWarrantService.getSumOfPrice();
+                System.out.println("Общая сумма продаж составляет " + sumOfPrice + " евро");
                 break;
         }
-
-
-
     }
 }

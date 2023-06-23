@@ -1,11 +1,11 @@
 package de.ait.repositories.reviews;
 
+import de.ait.models.DeliveryOffGoods;
 import de.ait.models.Product;
 import de.ait.models.Review;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewsRepositoryTextFileImpl implements ReviewsRepository {
@@ -18,7 +18,28 @@ public class ReviewsRepositoryTextFileImpl implements ReviewsRepository {
 
     @Override
     public List<Review> findAll() {
-        return null;
+
+        List<Review> reviews = new ArrayList<>();
+
+        try (FileReader fileReader = new FileReader(fileName);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                String[] parsed = line.split("\\|");
+                String id  = parsed[0];
+                String review = parsed[1];
+                String productId  = parsed[2];
+                String userId  = parsed[3];
+
+                reviews.add(new Review(id, review, productId, userId));
+                line = bufferedReader.readLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Произошла ошибка");
+        }
+        return reviews;
     }
 
     @Override

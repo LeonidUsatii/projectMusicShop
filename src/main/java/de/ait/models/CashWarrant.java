@@ -5,11 +5,8 @@ import java.time.LocalDateTime;
 public class CashWarrant {
     private String id;
     private final LocalDateTime dateTime;
-
     private String userId;
-
     private double sum;
-
     public CashWarrant(String id, LocalDateTime dateTime, String userId, double sum) {
 
         if (id != null) {

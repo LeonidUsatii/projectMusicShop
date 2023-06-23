@@ -1,6 +1,5 @@
 package de.ait.repositories.deliveryOffGoods;
 
-import de.ait.models.Category;
 import de.ait.models.DeliveryOffGoods;
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsR
     @Override
     public List<DeliveryOffGoods> findAll() {
 
-        List<DeliveryOffGoods> products = new ArrayList<>();
+        List<DeliveryOffGoods> delivery = new ArrayList<>();
 
         try (FileReader fileReader = new FileReader(fileName);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -26,25 +25,19 @@ public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsR
             while (line != null) {
                 String[] parsed = line.split("\\|");
                 String id  = parsed[0];
-                Category category = Category.valueOf(parsed[1]);
-                String title  = parsed[2];
-                double price  = Double.parseDouble(parsed[3]);
-                String releaseYear  = parsed[4];
+                String address = parsed[1];
+                String productId  = parsed[2];
+                String userId  = parsed[3];
+                String deliveryDate  = parsed[3];
 
-//                products.add(new Product(id, category, title, price, releaseYear)); // положили пользователя в список
-                line = bufferedReader.readLine(); // считали следующую строку
+                delivery.add(new DeliveryOffGoods(id, address, productId, userId, deliveryDate));
+                line = bufferedReader.readLine();
             }
         } catch (IOException e) {
             System.err.println("Произошла ошибка");
         }
-
-        return products;
+        return delivery;
     }
-
-//    @Override
-//    public void save(DeliveryOffGoods model) {
-//
-//    }
 
     @Override
     public DeliveryOffGoods findByTitle(String title) {
@@ -69,14 +62,4 @@ public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsR
         }
     }
 
-//    @Override
-//    public Product findByTitle(String title) {
-//        List<Product> products = findAll();
-//        for (Product product : products) {
-//            if (product.getTitle().equals(title)) {
-//                return product;
-//            }
-//        }
-//        return null;
-//    }
 }
