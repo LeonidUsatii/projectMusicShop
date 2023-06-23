@@ -39,7 +39,12 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public List<Film> filterByValue(String value) {
-        return null;
+        if (value == null) {
+            throw new IllegalArgumentException("Жанр не найден");
+        }
+        List<Film> films = filmsRepository.findAll();
+        return  films.stream()
+                .filter(((film) -> film.getGenre().name().equals(value)))
+                .toList();
     }
-
 }

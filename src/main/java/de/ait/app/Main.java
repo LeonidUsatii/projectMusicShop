@@ -218,6 +218,12 @@ public class Main {
                 List<Film> sortByPriceFilm  = filmService.sortByPrice();
                 System.out.println(sortByPriceFilm);
                 break;
+            case 42:
+                System.out.println("Введите жанр: ");
+                String genre = scanner.nextLine();
+                List<Film> filterByGenre = filmService.filterByValue(genre);
+                System.out.println(filterByGenre);
+                break;
         }
         System.out.println();
     }
