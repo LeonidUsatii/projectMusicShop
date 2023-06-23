@@ -177,6 +177,8 @@ public class Main {
                 System.out.println(products);
                 break;
             case 11:
+                List<Product> sortByPriceProduct = productService.sortByPrice();
+                System.out.println(sortByPriceProduct);
 
                 break;
 
@@ -185,8 +187,8 @@ public class Main {
                 System.out.println(books);
                 break;
             case 21:
-                List<Book> sortByPrice = bookService.sortByPrice();
-                System.out.println(sortByPrice);
+                List<Book> sortByPriceBooks = bookService.sortByPrice();
+                System.out.println(sortByPriceBooks);
                 break;
             case 3:
                 List<Music> music = musicService.getProducts();

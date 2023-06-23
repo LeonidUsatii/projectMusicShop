@@ -23,9 +23,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> sortByPrice() {
         List<Product> products = productsRepository.findAll();
-        List<Product> productsSorted = products.stream().sorted(Product::compareTo).toList();
-        return productsSorted;
-
+        return products.stream().sorted().toList();
     }
 
 }
