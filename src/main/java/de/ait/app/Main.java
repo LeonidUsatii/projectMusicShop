@@ -202,6 +202,10 @@ public class Main {
                 List<Film> films = filmService.getProducts();
                 System.out.println(films);
                 break;
+            case 41:
+                List<Film> sortByPriceFilm  = filmService.sortByPrice();
+                System.out.println(sortByPriceFilm);
+                break;
         }
         System.out.println();
     }

@@ -34,8 +34,7 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public List<Film> sortByPrice() {
         List<Film> films = filmsRepository.findAll();
-        List<Film> filmsSorted = films.stream().sorted(Film::compareTo).toList();
-        return filmsSorted;
+        return films.stream().sorted().toList();
     }
 
 }
