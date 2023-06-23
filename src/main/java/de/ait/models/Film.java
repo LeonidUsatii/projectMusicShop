@@ -32,7 +32,14 @@ public class Film implements Comparable <Film>{
 
     @Override
     public int compareTo(Film o) {
-            return Double.compare(o.getProductInfo().getPrice(),this.productInfo.getPrice());
+        if(this.productInfo.getPrice() != o.productInfo.getPrice()) {
+            return Double.compare(this.productInfo.getPrice(), o.getProductInfo().getPrice());
+        } else  if(!this.productInfo.getTitle().equals(o.productInfo.getTitle())) {
+            return this.productInfo.getTitle().compareTo(o.productInfo.getTitle());
+        } else if(!this.genre.equals(o.getGenre())){
+            return this.genre.compareTo(o.getGenre());
+        }
+        return 0;
     }
 
     @Override
