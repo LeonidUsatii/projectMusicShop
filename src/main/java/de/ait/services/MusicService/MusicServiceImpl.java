@@ -40,4 +40,9 @@ public class MusicServiceImpl implements MusicService {
 
     }
 
+    @Override
+    public List<Music> filterByValue(String value) {
+        return null;
+    }
+
 }

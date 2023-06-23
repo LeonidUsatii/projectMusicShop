@@ -26,4 +26,9 @@ public class ProductServiceImpl implements ProductService {
         return products.stream().sorted().toList();
     }
 
+    @Override
+    public List<Product> filterByValue(String value) {
+        return null;
+    }
+
 }

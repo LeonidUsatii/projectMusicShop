@@ -37,4 +37,9 @@ public class FilmServiceImpl implements FilmService {
         return films.stream().sorted().toList();
     }
 
+    @Override
+    public List<Film> filterByValue(String value) {
+        return null;
+    }
+
 }

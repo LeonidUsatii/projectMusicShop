@@ -38,6 +38,17 @@ public class BookServiceImpl implements BookService {
         return books.stream().sorted().toList();
     }
 
+    @Override
+    public List<Book> filterByValue(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Автор не найден");
+        }
+        List<Book> books = booksRepository.findAll();
+        return  books.stream()
+                .filter(((book) -> book.getAuthor().equals(value)))
+                .toList();
+    }
+
 
 
 }

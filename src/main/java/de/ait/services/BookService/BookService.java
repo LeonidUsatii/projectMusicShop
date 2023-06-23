@@ -9,7 +9,8 @@ public interface BookService extends EService <Book>{
                   GenreOfBook genreOfBook);
     @Override
     List<Book> getProducts();
-
+    @Override
     List<Book> sortByPrice();
-
+    @Override
+    List<Book> filterByValue(String value);
 }

@@ -190,6 +190,12 @@ public class Main {
                 List<Book> sortByPriceBooks = bookService.sortByPrice();
                 System.out.println(sortByPriceBooks);
                 break;
+            case 22:
+                System.out.println("Введите автора: ");
+                String author = scanner.nextLine();
+                List<Book> filterByAuthor = bookService.filterByValue(author);
+                System.out.println(filterByAuthor);
+                break;
             case 3:
                 List<Music> music = musicService.getProducts();
                 System.out.println(music);
