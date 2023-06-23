@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsRepository {
 
-    private String fileName;
+    private final String fileName;
     public DeliveryOffGoodsRepositoryTextFileImpl(String fileName) {
         this.fileName = fileName;
     }
