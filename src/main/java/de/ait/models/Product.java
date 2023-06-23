@@ -50,7 +50,7 @@ public class Product implements Comparable<Product>{
 
     public Product(Category category, String title, double price, String releaseYear) {
 
-        this.id = UUID.randomUUID().toString();
+       // this.id = UUID.randomUUID().toString();
 
         if (category != null) {
             this.category = category;
