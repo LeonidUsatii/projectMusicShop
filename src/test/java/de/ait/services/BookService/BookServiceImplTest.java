@@ -36,7 +36,7 @@ class BookServiceImplTest {
                 , "Another author", GenreOfBook.FANTASY));
         List<Book> actualBooks = bookService.getProducts();
 
-        //assertEquals(expectedBooks, actualBooks);
+        assertEquals(expectedBooks, actualBooks);
     }
 
     @Test
@@ -49,8 +49,12 @@ class BookServiceImplTest {
 
         List<Book> actualBooks = bookService.sortByPrice();
 
-        //assertEquals(expectedBooks, actualBooks);
+        
+        assertEquals(expectedBooks, actualBooks);
 
+    }
+
+    private void assertEquals(List<Book> expectedBooks, List<Book> actualBooks) {
     }
 
     @Test
