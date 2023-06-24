@@ -34,6 +34,10 @@ public class Book implements Comparable<Book>{
         return author;
     }
 
+    public void setTitle(String title) {
+        this.getProductInfo().setTitle(title);
+    }
+
     @Override
     public String toString() {
         return "Book{" +

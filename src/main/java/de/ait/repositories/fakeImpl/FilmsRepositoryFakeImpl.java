@@ -20,4 +20,14 @@ public class FilmsRepositoryFakeImpl implements FilmsRepository {
     public Film findByTitle(String title) {
         return null;
     }
+
+    @Override
+    public void update(Film updatedGood) {
+
+    }
+
+    @Override
+    public void delete(Film deleteGood) {
+
+    }
 }

@@ -11,5 +11,7 @@ public interface ProductService extends EService<Product> {
 
     List<Product> getProducts();
 
+    void changeGoodTitle(String oldTitle, String newTitle);
 
+    void deleteGoodTitle(String oldTitle);
 }

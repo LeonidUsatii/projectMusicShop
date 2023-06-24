@@ -19,8 +19,13 @@ public class Film implements Comparable <Film>{
     public GenreOfFilm getGenre() {
         return genre;
 
-
     }
+
+    public void setTitle(String title) {
+        this.getProductInfo().setTitle(title);
+    }
+
+
 
     @Override
     public String toString() {

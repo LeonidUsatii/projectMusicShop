@@ -1,13 +1,13 @@
 package de.ait.app;
 
 import de.ait.models.*;
-import de.ait.repositories.CashWarrant.CashWarrantRepository;
-import de.ait.repositories.CashWarrant.CashWarrantRepositoryTextFileImpl;
-import de.ait.repositories.DeliveryOffGoods.DeliveryOffGoodsRepository;
-import de.ait.repositories.DeliveryOffGoods.DeliveryOffGoodsRepositoryTextFileImpl;
 import de.ait.repositories.books.BooksRepository;
 import de.ait.repositories.books.BooksRepositoryTextFileImpl;
 
+import de.ait.repositories.cashWarrant.CashWarrantRepository;
+import de.ait.repositories.cashWarrant.CashWarrantRepositoryTextFileImpl;
+import de.ait.repositories.deliveryOffGoods.DeliveryOffGoodsRepository;
+import de.ait.repositories.deliveryOffGoods.DeliveryOffGoodsRepositoryTextFileImpl;
 import de.ait.repositories.films.FilmsRepository;
 import de.ait.repositories.films.FilmsRepositoryTextFileImpl;
 import de.ait.repositories.musics.MusicsRepository;
@@ -51,7 +51,6 @@ public class Main {
         UserService userService = new UserServiceImpl(usersRepository);
 
         ProductsRepository productsRepository = new ProductsRepositoryTextFileImpl("files/products.txt");
-        ProductService productService = new ProductServiceImpl(productsRepository);
 
         BooksRepository booksRepository = new BooksRepositoryTextFileImpl("files/books.txt");
         BookService bookService = new BookServiceImpl(booksRepository, productsRepository);
@@ -78,69 +77,127 @@ public class Main {
         FilmsRepository filmsRepository = new FilmsRepositoryTextFileImpl("files/films.txt");
         FilmService filmService = new FilmServiceImpl(filmsRepository, productsRepository);
 
+        ProductService productService = new
+                ProductServiceImpl(productsRepository, booksRepository, musicsRepository, filmsRepository);
+
+
         OrderRepository orderRepository = new OrderRepositoryTextFileImpl("files/orders.txt");
-        OrdersService ordersService = new OrdersServiceImpl(usersRepository, productsRepository,
-                orderRepository, deliveryOffGoodsRepository, cashWarrantRepository);
+        OrdersService ordersService = new
+                OrdersServiceImpl(usersRepository, productsRepository, orderRepository,
+                 deliveryOffGoodsRepository, cashWarrantRepository, booksRepository,
+                musicsRepository, filmsRepository);
 
-        while (true) {
-            System.out.println();
-            System.out.println("Приветствуем в нашем магазине, для совершения покупок, " +
-                    "нужно авторизоваться.");
+        String passwordAdmin = "admin";
+        System.out.println("Пароль админа - admin");
+        System.out.println("Для определения вашего статуса, введите пароль:");
+        String passwordUser = scanner.nextLine();
 
-            System.out.println();
+        if(passwordAdmin.equals(passwordUser)) {
+            System.out.println("Привет, Admin");
 
-            System.out.println("1. Создать личный кабинет.");
-            System.out.println("2. Просмотреть продукцию.");
-            System.out.println("3. Совершить покупку.");
-            System.out.println("4. Добавить отзыв.");
-            System.out.println("5. Добавить новый товар в БД.");
-            System.out.println("6. Отчёты.");
-            System.out.println("0. Выход.");
+            while (true) {
+                System.out.println("1. Добавить новый товар в БД.");
+                System.out.println("2. Удалить товар из БД.");
+                System.out.println("3. Обновить товар в БД.");
+                System.out.println("4. Отчёты.");
+                System.out.println("0. Выход.");
 
-            int command = scanner.nextInt();
-            scanner.nextLine();
+                int command = scanner.nextInt();
+                scanner.nextLine();
 
-            switch (command) {
-                case 1:
-                    System.out.println("Авторизоваться:");
+                switch (command) {
 
-                    addUser(userService, scanner);
-                    break;
-                case 2:
-                    System.out.println("Просмотреть товары:");
+                    case 1:
+                        System.out.println("Добавляем новые товары в магазин");
 
-                    viewProducts(productService, bookService,
-                            musicService, filmService, scanner);
-                    break;
-                case 3:
-                    System.out.println("Купить товар");
+                        addProducts(bookService,
+                                musicService, filmService, scanner);
+                        break;
+                    case 2:
+                        System.out.println("Удалить товар из БД");
 
-                    buyProduct(ordersService, scanner);
-                    break;
-                case 4:
-                    System.out.println("Добавить отзыв о товаре");
+                        System.out.println("Введите название товара:");
+                        String title = scanner.nextLine();
+                        productService.deleteGoodTitle(title);
+                        break;
+                    case 3:
+                        System.out.println("Обновить товар в БД");
 
-                    addReview(reviewService, scanner);
-                    break;
-                case 5:
-                    System.out.println("Добавляем новые товары в магазин");
+                        System.out.println("Введите название товара:");
+                        String oldTitle = scanner.nextLine();
 
-                    addProducts(bookService,
-                            musicService, filmService, scanner);
-                    break;
-                case 6:
-                    System.out.println("Отчёты");
-                    reports(userService, ordersService, cashWarrantService,
-                            deliveryOffGoodsService, reviewService,scanner);
-                    break;
-                case 0:
-                    System.out.println("Выход");
-                    System.exit(0);
-                default:
-                    System.out.println("Команда не распознана");
+                        System.out.println("Введите новое название товара:");
+                        String newTitle  = scanner.nextLine();
+                        productService.changeGoodTitle(oldTitle, newTitle);
+                        break;
+                    case 4:
+                        System.out.println("Отчёты");
+                        reports(userService, ordersService, cashWarrantService,
+                                deliveryOffGoodsService, reviewService,scanner);
+                        break;
+                    case 0:
+                        System.out.println("Выход");
+                        System.exit(0);
+                    default:
+                        System.out.println("Команда не распознана");
+                }
+            }
+
+            } else {
+            System.out.println("Привет, User");
+            while (true) {
+
+                System.out.println("Приветствуем в нашем магазине, для совершения покупок, " +
+                        "нужно авторизоваться.");
+
+                System.out.println("1. Создать личный кабинет.");
+                System.out.println("2. Просмотреть продукцию.");
+                System.out.println("3. Совершить покупку.");
+                System.out.println("4. Добавить отзыв.");
+                System.out.println("0. Выход.");
+
+                int command = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (command) {
+                    case 1:
+                        System.out.println("Авторизоваться:");
+
+                        addUser(userService, scanner);
+                        break;
+                    case 2:
+                        System.out.println("Просмотреть товары:");
+
+                        viewProducts(productService, bookService,
+                                musicService, filmService, scanner);
+                        break;
+                    case 3:
+                        System.out.println("Купить товар");
+
+                        buyProduct(ordersService, scanner);
+                        break;
+                    case 4:
+                        System.out.println("Добавить отзыв о товаре");
+
+                        addReview(reviewService, scanner);
+                        break;
+                    case 0:
+                        System.out.println("Выход");
+                        System.exit(0);
+                    default:
+                        System.out.println("Команда не распознана");
+                }
             }
         }
+
     }
+
+
+
+
+
+
+
 
     public static void addUser(UserService userService, Scanner scanner) {
 
@@ -408,7 +465,7 @@ public class Main {
     }
 
     public static void addReview(ReviewService reviewService, Scanner scanner) {
-        System.out.println("Для входа  в аккаунт, введите email:");
+        System.out.println("Для размещения отзыва, введите ваш email:");
 
         String email = scanner.nextLine();
         System.out.println("Введите название товара:");

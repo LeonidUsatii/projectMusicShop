@@ -15,4 +15,8 @@ public interface ProductsRepository extends CrudRepository<Product> {
 
     @Override
     Product findByTitle(String title);
+
+    void update(Product updatedGood);
+
+    void delete(Product deleteGood);
 }

@@ -25,7 +25,10 @@ public class Music implements Comparable<Music>{
 
     public String getExecutor() {
         return executor;
+    }
 
+    public void setTitle(String title) {
+        this.getProductInfo().setTitle(title);
     }
 
     @Override

@@ -67,4 +67,55 @@ public class ProductsRepositoryTextFileImpl implements ProductsRepository {
         }
         return null;
     }
+
+    @Override
+    public void update(Product updatedGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Product> goods = findAll();
+
+            for (Product oldGood : goods) {
+                if (oldGood.getId().equals(updatedGood.getId())) {
+                    oldGood.setTitle(updatedGood.getTitle());
+                    oldGood.setPrice(updatedGood.getPrice());
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Product product : goods) {
+                    writer.write(product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
+                            + "|" + product.getPrice() + "|" + product.getReleaseYear());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Product deleteGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Product> goods = findAll();
+
+            for (int i = 0; i < goods.size(); i++) {
+                if (goods.get(i).getId().equals(deleteGood.getId())) {
+                    goods.remove(i);
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Product product : goods) {
+                    writer.write(product.getId() + "|" + product.getCategory() + "|" + product.getTitle()
+                            + "|" + product.getPrice() + "|" + product.getReleaseYear());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
 }

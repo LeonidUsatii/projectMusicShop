@@ -20,4 +20,14 @@ public class ProductsRepositoryFakeImpl implements ProductsRepository {
     public Product findByTitle(String title) {
         return null;
     }
+
+    @Override
+    public void update(Product updatedGood) {
+
+    }
+
+    @Override
+    public void delete(Product deleteGood) {
+
+    }
 }

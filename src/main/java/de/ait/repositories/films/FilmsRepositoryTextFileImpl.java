@@ -64,6 +64,65 @@ public class FilmsRepositoryTextFileImpl implements FilmsRepository{
 
     @Override
     public Film findByTitle(String title) {
+        List<Film> films = findAll();
+        for (Film film : films) {
+            if (film.getProductInfo().getTitle().equals(title)) {
+                return film;
+            }
+        }
         return null;
+    }
+
+    @Override
+    public void update(Film updatedGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Film> goods = findAll();
+
+            for (Film oldGood : goods) {
+                if (oldGood.getProductInfo().getId().equals(updatedGood.getProductInfo().getId())) {
+                    oldGood.getProductInfo().setTitle(updatedGood.getProductInfo().getTitle());
+                    //oldGood.getProductInfo().setPrice(updatedGood.getProductInfo().getPrice());
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Film film : goods) {
+                    writer.write(film.getProductInfo().getId() + "|" + film.getProductInfo().getCategory()
+                            + "|" + film.getProductInfo().getTitle() + "|" + film.getProductInfo().getPrice()
+                            + "|" + film.getProductInfo().getReleaseYear() + "|" + film.getGenre());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Film deleteGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Film> goods = findAll();
+
+            for (int i = 0; i < goods.size(); i++) {
+                if (goods.get(i).getProductInfo().getId().equals(deleteGood.getProductInfo().getId())) {
+                    goods.remove(i);
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Film film : goods) {
+                    writer.write(film.getProductInfo().getId() + "|" + film.getProductInfo().getCategory()
+                            + "|" + film.getProductInfo().getTitle() + "|" + film.getProductInfo().getPrice()
+                            + "|" + film.getProductInfo().getReleaseYear() + "|" + film.getGenre());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
     }
 }

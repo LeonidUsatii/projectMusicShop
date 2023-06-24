@@ -35,4 +35,14 @@ public class BookRepositoryFakeImpl implements BooksRepository {
     public Book findByTitle(String title) {
         return null;
     }
+
+    @Override
+    public void update(Book updatedGood) {
+
+    }
+
+    @Override
+    public void delete(Book deleteGood) {
+
+    }
 }

@@ -66,8 +66,68 @@ public class BooksRepositoryTextFileImpl implements BooksRepository {
 
     @Override
     public Book findByTitle(String title) {
+        List<Book> books = findAll();
+        for (Book book : books) {
+            if (book.getProductInfo().getTitle().equals(title)) {
+                return book;
+            }
+        }
         return null;
     }
 
+    @Override
+    public void update(Book updatedGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+
+            List<Book> goods = findAll();
+
+            for (Book oldGood : goods) {
+                if (oldGood.getProductInfo().getId().equals(updatedGood.getProductInfo().getId())) {
+                    oldGood.setTitle(updatedGood.getProductInfo().getTitle());
+                }
+            }
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+
+                for (Book book : goods) {
+                    writer.write(book.getProductInfo().getId() + "|" + book.getProductInfo().getCategory()
+                            + "|" + book.getProductInfo().getTitle() + "|" + book.getProductInfo().getPrice()
+                            + "|" + book.getProductInfo().getReleaseYear()
+                            + "|" + book.getAuthor() + "|" + book.getGenreOfBook());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Book deleteGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Book> goods = findAll();
+
+            for (int i = 0; i < goods.size(); i++) {
+                if (goods.get(i).getProductInfo().getId().equals(deleteGood.getProductInfo().getId())) {
+                    goods.remove(i);
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Book book : goods) {
+                    writer.write(book.getProductInfo().getId() + "|" + book.getProductInfo().getCategory()
+                            + "|" + book.getProductInfo().getTitle() + "|" + book.getProductInfo().getPrice()
+                            + "|" + book.getProductInfo().getReleaseYear()
+                            + "|" + book.getAuthor() + "|" + book.getGenreOfBook());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
 
 }

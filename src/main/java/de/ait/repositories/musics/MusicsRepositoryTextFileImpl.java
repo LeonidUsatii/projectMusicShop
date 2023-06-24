@@ -67,6 +67,67 @@ public class MusicsRepositoryTextFileImpl implements MusicsRepository {
 
     @Override
     public Music findByTitle(String title) {
+        List<Music> musics = findAll();
+        for (Music music : musics) {
+            if (music.getProductInfo().getTitle().equals(title)) {
+                return music;
+            }
+        }
         return null;
+    }
+
+    @Override
+    public void update(Music updatedGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Music> goods = findAll();
+
+            for (Music oldGood : goods) {
+                if (oldGood.getProductInfo().getId().equals(updatedGood.getProductInfo().getId())) {
+                    oldGood.getProductInfo().setTitle(updatedGood.getProductInfo().getTitle());
+                    //oldGood.getProductInfo().setPrice(updatedGood.getProductInfo().getPrice());
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Music music : goods) {
+                    writer.write(music.getProductInfo().getId() + "|" + music.getProductInfo().getCategory()
+                            + "|" + music.getProductInfo().getTitle() + "|" + music.getProductInfo().getPrice()
+                            + "|" + music.getProductInfo().getReleaseYear() + "|"
+                            + music.getGenre() + "|" + music.getExecutor());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(Music deleteGood) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            List<Music> goods = findAll();
+
+            for (int i = 0; i < goods.size(); i++) {
+                if (goods.get(i).getProductInfo().getId().equals(deleteGood.getProductInfo().getId())) {
+                    goods.remove(i);
+                }
+            }
+
+            reader.close();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))){
+                for (Music music : goods) {
+                    writer.write(music.getProductInfo().getId() + "|" + music.getProductInfo().getCategory()
+                            + "|" + music.getProductInfo().getTitle() + "|" + music.getProductInfo().getPrice()
+                            + "|" + music.getProductInfo().getReleaseYear() + "|"
+                            + music.getGenre() + "|" + music.getExecutor());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Ошибка при работе с файлом - " + e.getMessage());
+        }
     }
 }
