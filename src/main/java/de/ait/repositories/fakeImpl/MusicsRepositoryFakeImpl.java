@@ -1,7 +1,6 @@
 package de.ait.repositories.fakeImpl;
 
-import de.ait.models.Music;
-import de.ait.models.Product;
+import de.ait.models.*;
 import de.ait.repositories.musics.MusicsRepository;
 
 import java.util.List;
@@ -24,7 +23,14 @@ public class MusicsRepositoryFakeImpl implements MusicsRepository {
 
     @Override
     public List<Music> findAll() {
-        return null;
+        Music music1 = new Music((new Product("Title",12,"1982"))
+                , GenreOfMusic.CLASSIC,"Executor");
+        Music music2 = new Music((new Product("Another title",9,"2019"))
+                ,GenreOfMusic.CLASSIC,"Another executor");
+        List<Music> music = List.of(music1,music2);
+
+        return music;
+
     }
 
     @Override

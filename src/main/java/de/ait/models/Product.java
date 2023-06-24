@@ -77,6 +77,12 @@ public class Product implements Comparable<Product>{
         }
     }
 
+    public Product(String title, double price, String releaseYear) {
+        this.title = title;
+        this.price = price;
+        this.releaseYear = releaseYear;
+    }
+
     public String getId() {
         return id;
     }

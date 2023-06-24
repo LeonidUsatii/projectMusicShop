@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class BookServiceImplTest {
     private BookServiceImpl bookService;
@@ -30,9 +32,9 @@ class BookServiceImplTest {
     @Test
     void getProducts() {
         List<Book> expectedBooks = new ArrayList<>();
-        expectedBooks.add(new Book(new Product( Category.BOOK,"Title",20,"1998")
+        expectedBooks.add(new Book(new Product( "Title",20,"1998")
                 ,"Author", GenreOfBook.POETRY));
-        expectedBooks.add(new Book(new Product(Category.BOOK, "Another title", 15.0, "2020")
+        expectedBooks.add(new Book(new Product( "Another title", 15.0, "2020")
                 , "Another author", GenreOfBook.FANTASY));
         List<Book> actualBooks = bookService.getProducts();
 
@@ -54,8 +56,7 @@ class BookServiceImplTest {
 
     }
 
-    private void assertEquals(List<Book> expectedBooks, List<Book> actualBooks) {
-    }
+
 
     @Test
     void filterByValue() {

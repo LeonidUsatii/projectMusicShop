@@ -15,11 +15,10 @@ public class BookRepositoryFakeImpl implements BooksRepository {
 
     @Override
     public List<Book> findAll() {
-        Book book1 = new Book((new Product
-                (Category.BOOK,"Title",20,"1998"))
+        Book book1 = new Book((new Product("Title",20,"1998"))
                 ,"Author", GenreOfBook.POETRY);
         Book book2 = new Book((new Product
-                (Category.BOOK,"Another title",15.0,"2020"))
+                ("Another title",15.0,"2020"))
                 ,"Another author", GenreOfBook.FANTASY);
         List<Book> books = List.of(book1,book2);
 
