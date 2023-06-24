@@ -28,7 +28,7 @@ public class DeliveryOffGoodsRepositoryTextFileImpl implements DeliveryOffGoodsR
                 String address = parsed[1];
                 String productId  = parsed[2];
                 String userId  = parsed[3];
-                String deliveryDate  = parsed[3];
+                String deliveryDate  = parsed[4];
 
                 delivery.add(new DeliveryOffGoods(id, address, productId, userId, deliveryDate));
                 line = bufferedReader.readLine();

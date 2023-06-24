@@ -3,6 +3,8 @@ package de.ait.repositories.cashWarrant;
 import de.ait.models.CashWarrant;
 import de.ait.models.Category;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class CashWarrantRepositoryTextFileImpl implements CashWarrantRepository 
     @Override
     public List<CashWarrant> findAll() {
 
-        List<CashWarrant> products = new ArrayList<>();
+        List<CashWarrant> cashWarrants = new ArrayList<>();
 
         try (FileReader fileReader = new FileReader(fileName);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -26,19 +28,18 @@ public class CashWarrantRepositoryTextFileImpl implements CashWarrantRepository 
             while (line != null) {
                 String[] parsed = line.split("\\|");
                 String id  = parsed[0];
-                Category category = Category.valueOf(parsed[1]);
-                String title  = parsed[2];
+                LocalDateTime dateTime = LocalDateTime.parse(parsed[1]);
+                String userId  = parsed[2];
                 double price  = Double.parseDouble(parsed[3]);
-                String releaseYear  = parsed[4];
 
-                //products.add(new Product(id, category, title, price, releaseYear)); // положили пользователя в список
-                line = bufferedReader.readLine(); // считали следующую строку
+                cashWarrants.add(new CashWarrant(id, dateTime, userId, price));
+                line = bufferedReader.readLine();
             }
         } catch (IOException e) {
             System.err.println("Произошла ошибка");
         }
 
-        return products;
+        return cashWarrants;
     }
 
     @Override
@@ -65,14 +66,4 @@ public class CashWarrantRepositoryTextFileImpl implements CashWarrantRepository 
         return null;
     }
 
-//    @Override
-//    public Product findByTitle(String title) {
-//        List<Product> products = findAll();
-//        for (Product product : products) {
-//            if (product.getTitle().equals(title)) {
-//                return product;
-//            }
-//        }
-//        return null;
-//    }
 }
