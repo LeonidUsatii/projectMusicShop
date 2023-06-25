@@ -21,10 +21,20 @@ class MusicServiceImplTest {
     @Test
     void getProducts() {
         List<Music> expectedMusic = new ArrayList<>();
-        expectedMusic.add(new Music(new Product("Title",12,"1982"),
-                GenreOfMusic.CLASSIC,"Executor"));
-        expectedMusic.add(new Music(new Product("Another title",9,"2019"),
-                GenreOfMusic.CLASSIC,"Another executor"));
+
+        Music music1 = new Music((new Product("Title1",20,"1998")),
+                GenreOfMusic.CLASSIC,"Executor1");
+        Music music2 = new Music((new Product
+                ("Title2",10.0,"2020")),
+                GenreOfMusic.ROCK, "Executor2");
+        Music music3 = new Music((new Product
+                ("Title3",15.0,"2020")),
+                GenreOfMusic.POP, "Executor1");
+
+        expectedMusic.add(music1);
+        expectedMusic.add(music2);
+        expectedMusic.add(music3);
+
         List<Music> actualMusic = musicService.getProducts();
 
         assertEquals(expectedMusic, actualMusic);
@@ -33,16 +43,49 @@ class MusicServiceImplTest {
 
     @Test
     void sortByPrice() {
-        List<Music> expectedMusic = new ArrayList<>();
-        expectedMusic.add(new Music(new Product("Another title",9,"2019"),
-                GenreOfMusic.CLASSIC,"Another executor"));
-        expectedMusic.add(new Music(new Product("Title",12,"1982"),
-                GenreOfMusic.CLASSIC,"Executor"));
+        List<Music> musics = new ArrayList<>();
 
+        Music music1 = new Music((new Product("Title1",20,"1998")),
+                GenreOfMusic.CLASSIC,"Executor1");
+        Music music2 = new Music((new Product
+                ("Title2",10.0,"2020")),
+                GenreOfMusic.ROCK, "Executor2");
+        Music music3 = new Music((new Product
+                ("Title3",15.0,"2020")),
+                GenreOfMusic.POP, "Executor1");
+
+        musics.add(music1);
+        musics.add(music2);
+        musics.add(music3);
+
+        List<Music> expectedMusic = musics.stream().sorted().toList();
         List<Music> actualMusic = musicService.sortByPrice();
-
         assertEquals(expectedMusic, actualMusic);
+    }
 
+    @Test
+    void filterByValue() {
+        List<Music> musics = new ArrayList<>();
 
+        Music music1 = new Music((new Product("Title1",20,"1998")),
+                GenreOfMusic.CLASSIC,"Executor1");
+        Music music2 = new Music((new Product
+                ("Title2",10.0,"2020")),
+                GenreOfMusic.ROCK, "Executor2");
+        Music music3 = new Music((new Product
+                ("Title3",15.0,"2020")),
+                GenreOfMusic.POP, "Executor1");
+
+        musics.add(music1);
+        musics.add(music2);
+        musics.add(music3);
+
+        String value = "Executor1";
+
+        List<Music> expectedMusic = musics.stream()
+                .filter(((music) -> music.getExecutor().equals(value)))
+                .toList();
+        List<Music> actualMusic = musicService.filterByValue(value);
+        assertEquals(expectedMusic, actualMusic);
     }
 }

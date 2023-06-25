@@ -8,10 +8,12 @@ import de.ait.services.EService;
 import java.util.List;
 
 public interface ProductService extends EService<Product> {
-
+    @Override
     List<Product> getProducts();
 
     void changeGoodTitle(String oldTitle, String newTitle);
 
     void deleteGoodTitle(String oldTitle);
+
+    Product findByTitle(String title);
 }

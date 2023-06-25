@@ -1,5 +1,6 @@
 package de.ait.models;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class User {
@@ -73,9 +74,25 @@ public class User {
     }
 
     public User(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+
+        if (firstName != null) {
+            this.firstName = firstName;
+        } else {
+            System.err.println("Введите firstName");
+        }
+
+        if (lastName != null) {
+            this.lastName = lastName;
+        } else {
+            System.err.println("Введите lastName");
+        }
+
+        if (email != null) {
+            this.email = email;
+        } else {
+            System.err.println("Введите email");
+        }
+
     }
 
     public String getId() {
@@ -107,5 +124,18 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, password);
     }
 }

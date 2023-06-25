@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DeliveryOffGoodsServiceImpl implements DeliveryOffGoodsService {
 
-    private DeliveryOffGoodsRepository deliveryOffGoodsRepository;
+    private final DeliveryOffGoodsRepository deliveryOffGoodsRepository;
 
 
     public DeliveryOffGoodsServiceImpl(DeliveryOffGoodsRepository deliveryOffGoodsRepository) {

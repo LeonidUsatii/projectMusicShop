@@ -8,7 +8,7 @@ import java.util.List;
 public interface MusicService extends EService<Music> {
     void addMusic(Category category, String title, double price, String releaseYear,
                   GenreOfMusic genre, String executor);
-
+    @Override
     List<Music> getProducts();
 
     @Override

@@ -15,7 +15,6 @@ public interface BooksRepository extends CrudRepository<Book> {
     @Override
     Book findByTitle(String title);
     void update(Book updatedGood);
-
     void delete(Book deleteGood);
 
 }

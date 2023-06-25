@@ -8,7 +8,12 @@ import java.util.List;
 public class ProductsRepositoryFakeImpl implements ProductsRepository {
     @Override
     public List<Product> findAll() {
-        return null;
+
+        Product product1 = new Product("Title1",20,"1998");
+        Product product2 = new Product("Title2",10.0,"2020");
+        Product product3 = new Product("Title3",15.0,"2020");
+
+        return List.of(product1, product2, product3);
     }
 
     @Override
@@ -18,6 +23,12 @@ public class ProductsRepositoryFakeImpl implements ProductsRepository {
 
     @Override
     public Product findByTitle(String title) {
+        List<Product> products = findAll();
+        for (Product product : products) {
+            if (product.getTitle().equals(title)) {
+                return product;
+            }
+        }
         return null;
     }
 

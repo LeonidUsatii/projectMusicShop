@@ -8,11 +8,17 @@ import java.util.List;
 public class FilmsRepositoryFakeImpl implements FilmsRepository {
     @Override
     public List<Film> findAll() {
-        Film film1 = new Film((new Product("Title",4,"2022")),GenreOfFilm.COMEDY);
-        Film film2 = new Film((new Product("Another title",6,"2012")),GenreOfFilm.ACTION);
-        List<Film> films = List.of(film1,film2);
 
-        return films;
+        Film film1 = new Film((new Product("Title1",20,"1998")),
+                GenreOfFilm.COMEDY);
+        Film film2 = new Film((new Product
+                ("Title2",10.0,"2020")),
+                GenreOfFilm.ACTION);
+        Film film3 = new Film((new Product
+                ("Title3",15.0,"2020")),
+                GenreOfFilm.COMEDY);
+
+        return List.of(film1, film2, film3);
     }
 
     @Override

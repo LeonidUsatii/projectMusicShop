@@ -5,15 +5,10 @@ import java.util.UUID;
 
 public class Product implements Comparable<Product>{
     private String id;
-
     private Category category;
-
     private String title;
-
     private double price;
-
     private String releaseYear;
-
     public Product(String id, Category category, String title, double price,
                    String releaseYear) {
 
@@ -78,9 +73,24 @@ public class Product implements Comparable<Product>{
     }
 
     public Product(String title, double price, String releaseYear) {
-        this.title = title;
-        this.price = price;
-        this.releaseYear = releaseYear;
+
+        if (title != null) {
+            this.title = title;
+        } else {
+            System.err.println("Введите название");
+        }
+
+        if (price > 0) {
+            this.price = price;
+        } else {
+            System.err.println("Введите корректную цену");
+        }
+
+        if (releaseYear != null) {
+            this.releaseYear = releaseYear;
+        } else {
+            System.err.println("Введите корректную дату");
+        }
     }
 
     public String getId() {

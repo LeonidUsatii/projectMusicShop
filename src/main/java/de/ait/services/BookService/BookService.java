@@ -5,7 +5,8 @@ import de.ait.services.EService;
 import java.util.List;
 
 public interface BookService extends EService <Book>{
-    void addBook(Category category, String title,  double price,String releaseYear, String author,
+    void addBook(Category category, String title,  double price,
+                 String releaseYear, String author,
                   GenreOfBook genreOfBook);
     @Override
     List<Book> getProducts();

@@ -26,16 +26,22 @@ class BookServiceImplTest {
     }
 
     @Test
-    void addBook() {
-    }
-
-    @Test
     void getProducts() {
         List<Book> expectedBooks = new ArrayList<>();
-        expectedBooks.add(new Book(new Product( "Title",20,"1998")
-                ,"Author", GenreOfBook.POETRY));
-        expectedBooks.add(new Book(new Product( "Another title", 15.0, "2020")
-                , "Another author", GenreOfBook.FANTASY));
+
+        Book book1 = new Book((new Product("Title1",20,"1998"))
+                ,"Author3", GenreOfBook.POETRY);
+        Book book2 = new Book((new Product
+                ("Title2",10.0,"2020"))
+                ,"Author1", GenreOfBook.FANTASY);
+        Book book3 = new Book((new Product
+                ("Title3",15.0,"2020"))
+                ,"Author3", GenreOfBook.FANTASY);
+
+        expectedBooks.add(book1);
+        expectedBooks.add(book2);
+        expectedBooks.add(book3);
+
         List<Book> actualBooks = bookService.getProducts();
 
         assertEquals(expectedBooks, actualBooks);
@@ -43,22 +49,51 @@ class BookServiceImplTest {
 
     @Test
     void sortByPrice() {
-        List<Book> expectedBooks = new ArrayList<>();
-        expectedBooks.add(new Book(new Product(Category.BOOK, "Another title", 15.0, "2020")
-                , "Another author", GenreOfBook.FANTASY));
-        expectedBooks.add(new Book(new Product( Category.BOOK,"Title",20,"1998")
-                ,"Author", GenreOfBook.POETRY));
+        List<Book> books = new ArrayList<>();
 
+        Book book1 = new Book((new Product("Title1",20,"1998"))
+                ,"Author3", GenreOfBook.POETRY);
+        Book book2 = new Book((new Product
+                ("Title2",10.0,"2020"))
+                ,"Author1", GenreOfBook.FANTASY);
+        Book book3 = new Book((new Product
+                ("Title3",15.0,"2020"))
+                ,"Author3", GenreOfBook.FANTASY);
+
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+
+        List<Book> expectedBooks = books.stream().sorted().toList();
         List<Book> actualBooks = bookService.sortByPrice();
-
-        
         assertEquals(expectedBooks, actualBooks);
-
     }
-
-
 
     @Test
     void filterByValue() {
+        List<Book> books = new ArrayList<>();
+
+        Book book1 = new Book((new Product("Title1",20,"1998"))
+                ,"Author3", GenreOfBook.POETRY);
+        Book book2 = new Book((new Product
+                ("Title2",10.0,"2020"))
+                ,"Author1", GenreOfBook.FANTASY);
+        Book book3 = new Book((new Product
+                ("Title3",15.0,"2020"))
+                ,"Author3", GenreOfBook.FANTASY);
+
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+
+        String value = "Author3";
+
+        List<Book> expectedBooks = books.stream()
+                .filter(((book) -> book.getAuthor().equals(value)))
+                .toList();
+
+        List<Book> actualBooks = bookService.filterByValue(value);
+
+        assertEquals(expectedBooks, actualBooks);
     }
 }

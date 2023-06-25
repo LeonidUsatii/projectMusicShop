@@ -10,13 +10,9 @@ import de.ait.repositories.products.ProductsRepository;
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-
     private final ProductsRepository productsRepository;
-
     private final BooksRepository booksRepository;
-
     private final MusicsRepository musicsRepository;
-
     private final FilmsRepository filmsRepository;
 
     public ProductServiceImpl(ProductsRepository productsRepository, BooksRepository booksRepository,
@@ -29,7 +25,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getProducts() {
-
         return productsRepository.findAll();
     }
 
@@ -40,27 +35,22 @@ public class ProductServiceImpl implements ProductService {
         Music music = musicsRepository.findByTitle(oldTitle);
         Film film = filmsRepository.findByTitle(oldTitle);
 
-
         if(product != null) {
             product.setTitle(newTitle);
             productsRepository.update(product);
         }
-
         if(book != null) {
             book.setTitle(newTitle);
             booksRepository.update(book);
         }
-
         if(film != null) {
             film.setTitle(newTitle);
             filmsRepository.update(film);
         }
-
         if(music != null) {
             music.setTitle(newTitle);
             musicsRepository.update(music);
         }
-
     }
 
     @Override
@@ -76,15 +66,17 @@ public class ProductServiceImpl implements ProductService {
         if(book != null) {
             booksRepository.delete(book);
         }
-
         if(music != null) {
             musicsRepository.delete(music);
         }
-
         if(film != null) {
             filmsRepository.delete(film);
         }
+    }
 
+    @Override
+    public Product findByTitle(String title) {
+        return productsRepository.findByTitle(title);
     }
 
     @Override

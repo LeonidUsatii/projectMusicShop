@@ -8,9 +8,7 @@ import de.ait.repositories.products.ProductsRepository;
 import java.util.List;
 
 public class MusicServiceImpl implements MusicService {
-
-   private final MusicsRepository musicsRepository;
-
+    private final MusicsRepository musicsRepository;
     private final ProductsRepository productsRepository;
 
     public MusicServiceImpl(MusicsRepository musicsRepository, ProductsRepository productsRepository) {
@@ -24,12 +22,10 @@ public class MusicServiceImpl implements MusicService {
         Product productInfo = new Product(category, title, price, releaseYear);
         productsRepository.save(productInfo);
         musicsRepository.save(new Music(productInfo, genre, executor));
-
     }
 
     @Override
     public List<Music> getProducts() {
-
         return musicsRepository.findAll();
     }
 
@@ -47,7 +43,7 @@ public class MusicServiceImpl implements MusicService {
             throw new IllegalArgumentException("Автор не найден");
         }
         List<Music> musics = musicsRepository.findAll();
-        return  musics.stream()
+        return musics.stream()
                 .filter(((music) -> music.getExecutor().equals(value)))
                 .toList();
     }

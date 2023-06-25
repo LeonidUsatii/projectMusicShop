@@ -1,5 +1,7 @@
 package de.ait.models;
 
+import java.util.Objects;
+
 public class Review {
 
     private String id;
@@ -59,5 +61,18 @@ public class Review {
                 ", productId='" + productId + '\'' +
                 ", userId='" + userId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Review review1 = (Review) o;
+        return Objects.equals(id, review1.id) && Objects.equals(review, review1.review) && Objects.equals(productId, review1.productId) && Objects.equals(userId, review1.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, review, productId, userId);
     }
 }

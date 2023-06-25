@@ -23,14 +23,17 @@ public class MusicsRepositoryFakeImpl implements MusicsRepository {
 
     @Override
     public List<Music> findAll() {
-        Music music1 = new Music((new Product("Title",12,"1982"))
-                , GenreOfMusic.CLASSIC,"Executor");
-        Music music2 = new Music((new Product("Another title",9,"2019"))
-                ,GenreOfMusic.CLASSIC,"Another executor");
-        List<Music> music = List.of(music1,music2);
 
-        return music;
+        Music music1 = new Music((new Product("Title1",20,"1998")),
+                GenreOfMusic.CLASSIC,"Executor1");
+        Music music2 = new Music((new Product
+                ("Title2",10.0,"2020")),
+                GenreOfMusic.ROCK, "Executor2");
+        Music music3 = new Music((new Product
+                ("Title3",15.0,"2020")),
+                GenreOfMusic.POP, "Executor1");
 
+        return List.of(music1, music2, music3);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package de.ait.models;
 
+import java.util.Objects;
+
 public class DeliveryOffGoods {
     private String id;
 
@@ -76,4 +78,16 @@ public class DeliveryOffGoods {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeliveryOffGoods that = (DeliveryOffGoods) o;
+        return Objects.equals(id, that.id) && Objects.equals(address, that.address) && Objects.equals(productId, that.productId) && Objects.equals(userId, that.userId) && Objects.equals(deliveryDate, that.deliveryDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, address, productId, userId, deliveryDate);
+    }
 }
